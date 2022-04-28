@@ -2,13 +2,49 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using Newtonsoft.Json;
 
 public class GameController : MonoBehaviour
 {
+
+    private const string BASE_URI = "https://odin9worldsmidgard.mypinata.cloud/ipfs/QmTgJNNnaF2tcaXNufmkjKHEUquJA45sW9V9bBw2MdgEDn/";
+    private const string BASE_EXTENSION = ".json";
+    private const int LAST_NFT_ID = 999;
+
+    public int cardAmount = 3;
+    public List<int> selectedNfts;
+    public List<int> playerNfts;
+    public List<int> aiNfts;
+
+    private Dictionary<int, NFTMetadata> metadata;
+
     void Start()
     {
-        // A correct website page.
-        StartCoroutine(GetRequest("https://www.example.com"));
+        metadata = new Dictionary<int, NFTMetadata>();
+        List<Coroutine> coroutines = new List<Coroutine>();
+        GenerateRandomMatch();
+        for (int i = 0; i < selectedNfts.Count; i++) {
+            coroutines.Add(StartCoroutine(GetRequest(BASE_URI + i + BASE_EXTENSION)));
+        }
+        Debug.Log("a");
+    }
+
+    
+
+    void GenerateRandomMatch() {
+        selectedNfts = new List<int>();
+        HashSet<int> alreadyUsedIds = new HashSet<int>();
+        alreadyUsedIds.Add(0);
+        for (int i = 0; i < cardAmount * 2; i++) {
+            int rand = 0;
+            while (alreadyUsedIds.Contains(rand)) {
+                rand = Random.Range(1, LAST_NFT_ID + 1);
+                selectedNfts.Add(rand);
+            }
+            alreadyUsedIds.Add(rand);
+        }
+        playerNfts = selectedNfts.GetRange(0,cardAmount);
+        aiNfts = selectedNfts.GetRange(cardAmount,cardAmount);
     }
 
     IEnumerator GetRequest(string uri)
@@ -20,6 +56,10 @@ public class GameController : MonoBehaviour
 
             string[] pages = uri.Split('/');
             int page = pages.Length - 1;
+            string nftMetadata = webRequest.downloadHandler.text;
+            NFTMetadata currentMetadata = new NFTMetadata();
+            currentMetadata = JsonConvert.DeserializeObject<NFTMetadata>(nftMetadata);
+            metadata.Add(currentMetadata.edition, currentMetadata);
 
             switch (webRequest.result)
             {

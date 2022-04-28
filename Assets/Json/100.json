@@ -1,0 +1,69 @@
+{
+  "name": "Odin9Worlds: Midgard #100",
+  "description": "Odin9Worlds is the First-Play-To-Earn Metaverse NFT game set within the Norse Mythology",
+  "image": "https://odin9worldsmidgard.mypinata.cloud/ipfs/QmTFZ4WtjUX3ZMvkEQU3j786kMUrtzv2B1Wo6zCBLzKJFE/100.png",
+  "dna": "376db92915bb723336b6bfbeff72a9f0c009aa2e",
+  "edition": 100,
+  "attributes": [
+    {
+      "trait_type": "Axe Background",
+      "value": "Borealis"
+    },
+    {
+      "trait_type": "Frame",
+      "value": "Frame"
+    },
+    {
+      "trait_type": "Axe Handle",
+      "value": "DragonBone"
+    },
+    {
+      "trait_type": "Axe Base 3",
+      "value": "RedHandshake"
+    },
+    {
+      "trait_type": "Axe Pattern 3",
+      "value": "PathOfGlory"
+    },
+    {
+      "trait_type": "Axe Steam Punk",
+      "value": "OxyBurner"
+    },
+    {
+      "trait_type": "Axe Runes",
+      "value": "FehuWealth"
+    },
+    {
+      "trait_type": "Megin",
+      "value": 19
+    },
+    {
+      "trait_type": "Attack",
+      "value": 12
+    },
+    {
+      "trait_type": "Defense",
+      "value": 17
+    },
+    {
+      "trait_type": "Magic",
+      "value": 17
+    },
+    {
+      "trait_type": "Speed",
+      "value": 16
+    },
+    {
+      "trait_type": "Stun",
+      "value": 16
+    },
+    {
+      "trait_type": "Critpre",
+      "value": 21
+    },
+    {
+      "trait_type": "Total Power",
+      "value": 118
+    }
+  ]
+}
