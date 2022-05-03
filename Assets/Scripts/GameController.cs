@@ -11,6 +11,14 @@ public class GameController : MonoBehaviour
     private const string BASE_EXTENSION = ".json";
     private const int LAST_NFT_ID = 999;
 
+    public GameObject nftPrefab;
+    public GameObject aiHand;
+    public GameObject playerHand;
+    public List<GameObject> aiCards;
+    public List<GameObject> playerCards;
+    public int aiTotalPower = 0;
+    public int playerTotalPower = 0;
+
     public int cardAmount = 3;
     public List<int> selectedNfts;
     public List<int> playerNfts;
@@ -18,15 +26,30 @@ public class GameController : MonoBehaviour
 
     private Dictionary<int, NFTMetadata> metadata;
 
+    private Texture2D nftImage;
     void Start()
     {
         metadata = new Dictionary<int, NFTMetadata>();
+        aiCards = new List<GameObject>();
+        playerCards = new List<GameObject>();
         List<Coroutine> coroutines = new List<Coroutine>();
         GenerateRandomMatch();
-        for (int i = 0; i < selectedNfts.Count; i++) {
-            coroutines.Add(StartCoroutine(GetRequest(BASE_URI + i + BASE_EXTENSION)));
+        foreach( Transform item in aiHand.GetComponentsInChildren<Transform>()) {
+            if (item.name != "AIHand") {
+               aiCards.Add(item.gameObject);
+            }
         }
-        Debug.Log("a");
+        foreach( Transform item in playerHand.GetComponentsInChildren<Transform>()) {
+            if (item.name != "PlayerHand") {
+                playerCards.Add(item.gameObject);
+            }
+        }
+        for (int i = 0; i < aiNfts.Count; i++) {
+            coroutines.Add(StartCoroutine(GetRequest(aiNfts[i], i, true)));
+        }
+        for (int i = 0; i < playerNfts.Count; i++) {
+            coroutines.Add(StartCoroutine(GetRequest(playerNfts[i], i, false)));
+        }
     }
 
     
@@ -47,8 +70,10 @@ public class GameController : MonoBehaviour
         aiNfts = selectedNfts.GetRange(cardAmount,cardAmount);
     }
 
-    IEnumerator GetRequest(string uri)
+    IEnumerator GetRequest(int nftId, int handIndex, bool isAI)
     {
+        string uri = BASE_URI + nftId + BASE_EXTENSION;
+
         using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
         {
             // Request and wait for the desired page.
@@ -60,6 +85,23 @@ public class GameController : MonoBehaviour
             NFTMetadata currentMetadata = new NFTMetadata();
             currentMetadata = JsonConvert.DeserializeObject<NFTMetadata>(nftMetadata);
             metadata.Add(currentMetadata.edition, currentMetadata);
+
+            using (UnityWebRequest textureRequest = UnityWebRequestTexture.GetTexture(currentMetadata.image))
+            {
+                yield return textureRequest.SendWebRequest();
+
+                nftImage = DownloadHandlerTexture.GetContent(textureRequest);
+                Sprite prefabSprite = aiCards[handIndex].GetComponent<SpriteRenderer>().sprite;
+                Sprite nftSprite = Sprite.Create(nftImage, new Rect(0, 0, nftImage.width, nftImage.height), new Vector2(0.5f, 0.5f), prefabSprite.pixelsPerUnit);
+                if (isAI) {
+                    aiCards[handIndex].GetComponent<SpriteRenderer>().sprite = nftSprite;
+                    aiTotalPower += aiCards[handIndex].GetComponent<NFTGameObjectInfo>().Initialize(currentMetadata);
+
+                } else {
+                    playerCards[handIndex].GetComponent<SpriteRenderer>().sprite = nftSprite;
+                    playerTotalPower += playerCards[handIndex].GetComponent<NFTGameObjectInfo>().Initialize(currentMetadata);
+                }
+            }
 
             switch (webRequest.result)
             {
