@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Networking;
 using Newtonsoft.Json;
 
@@ -9,9 +10,12 @@ public class GameController : MonoBehaviour
 
     private const string BASE_URI = "https://odin9worldsmidgard.mypinata.cloud/ipfs/QmTgJNNnaF2tcaXNufmkjKHEUquJA45sW9V9bBw2MdgEDn/";
     private const string BASE_EXTENSION = ".json";
+    private const string AI_HAND_NAME = "AIHand";
+    private const string PLAYER_HAND_NAME = "PlayerHand";
     private const int LAST_NFT_ID = 999;
 
-    public GameObject nftPrefab;
+    public int cardAmount;
+    public List<GameObject> boards;
     public GameObject aiHand;
     public GameObject playerHand;
     public List<GameObject> aiCards;
@@ -19,7 +23,7 @@ public class GameController : MonoBehaviour
     public int aiTotalPower = 0;
     public int playerTotalPower = 0;
 
-    public int cardAmount = 3;
+
     public List<int> selectedNfts;
     public List<int> playerNfts;
     public List<int> aiNfts;
@@ -33,14 +37,17 @@ public class GameController : MonoBehaviour
         aiCards = new List<GameObject>();
         playerCards = new List<GameObject>();
         List<Coroutine> coroutines = new List<Coroutine>();
+        Instantiate(boards[cardAmount-1]);
+        aiHand = GameObject.Find(AI_HAND_NAME);
+        playerHand = GameObject.Find(PLAYER_HAND_NAME);
         GenerateRandomMatch();
         foreach( Transform item in aiHand.GetComponentsInChildren<Transform>()) {
-            if (item.name != "AIHand") {
+            if (item.name != AI_HAND_NAME) {
                aiCards.Add(item.gameObject);
             }
         }
         foreach( Transform item in playerHand.GetComponentsInChildren<Transform>()) {
-            if (item.name != "PlayerHand") {
+            if (item.name != PLAYER_HAND_NAME) {
                 playerCards.Add(item.gameObject);
             }
         }
@@ -52,9 +59,36 @@ public class GameController : MonoBehaviour
         }
     }
 
-    
+    public void RerollMatch() {
+        Scene scene = SceneManager.GetActiveScene(); 
+        SceneManager.LoadScene(scene.name);
+    }
 
-    void GenerateRandomMatch() {
+
+    public void Battle() {
+        int aiPoints = 0;
+        int playerPoints = 0;
+        for (int i = 0; i < aiCards.Count; i++) {
+            int aiType = (int) aiCards[i].GetComponent<NFTGameObjectInfo>().weaponType;
+            int playerType = (int) playerCards[i].GetComponent<NFTGameObjectInfo>().weaponType;
+            if (aiType == 0 && playerType == 1) {
+                aiPoints++;
+            } else if (aiType == 0 && playerType == 2) {
+                playerPoints++;
+            } else if (aiType == 1 && playerType == 2) {
+                aiPoints++;
+            } else if (aiType == 1 && playerType == 0) {
+                playerPoints++;
+            } else if (aiType == 2 && playerType == 0) {
+                aiPoints++;
+            } else if (aiType == 2 && playerType == 1) {
+                playerPoints++;
+            }
+        }
+        Debug.Log(aiPoints.ToString() + ", " + playerPoints.ToString());
+    }
+
+    private void GenerateRandomMatch() {
         selectedNfts = new List<int>();
         HashSet<int> alreadyUsedIds = new HashSet<int>();
         alreadyUsedIds.Add(0);
@@ -70,7 +104,7 @@ public class GameController : MonoBehaviour
         aiNfts = selectedNfts.GetRange(cardAmount,cardAmount);
     }
 
-    IEnumerator GetRequest(int nftId, int handIndex, bool isAI)
+    private IEnumerator GetRequest(int nftId, int handIndex, bool isAI)
     {
         string uri = BASE_URI + nftId + BASE_EXTENSION;
 
