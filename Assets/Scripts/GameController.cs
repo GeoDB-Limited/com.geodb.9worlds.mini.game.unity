@@ -4,6 +4,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Networking;
 using Newtonsoft.Json;
+using TMPro;
+
+public enum SingleMatchState
+{
+    Tie = -1,
+    AIWinner = 0,
+    PlayerWinner = 1
+}
 
 public class GameController : MonoBehaviour
 {
@@ -12,10 +20,14 @@ public class GameController : MonoBehaviour
     private const string BASE_EXTENSION = ".json";
     private const string AI_HAND_NAME = "AIHand";
     private const string PLAYER_HAND_NAME = "PlayerHand";
+    private const string AI_TOTAL_POWER_NAME = "TotalPowerAI";
+    private const string PLAYER_TOTAL_POWER_NAME = "TotalPowerPlayer";
+    private const string REORDER_BUTTON_NAME = "ReorderButton";
     private const int LAST_NFT_ID = 999;
 
     public int cardAmount;
     public List<GameObject> boards;
+    public GameObject reorderButton;
     public GameObject aiHand;
     public GameObject playerHand;
     public List<GameObject> aiCards;
@@ -23,19 +35,20 @@ public class GameController : MonoBehaviour
     public int aiTotalPower = 0;
     public int playerTotalPower = 0;
 
-
     public List<int> selectedNfts;
     public List<int> playerNfts;
     public List<int> aiNfts;
+    public SingleMatchState[] singleMatchesState; 
 
     private Dictionary<int, NFTMetadata> metadata;
-
     private Texture2D nftImage;
+
     void Start()
     {
         metadata = new Dictionary<int, NFTMetadata>();
         aiCards = new List<GameObject>();
         playerCards = new List<GameObject>();
+        singleMatchesState = new SingleMatchState[cardAmount];
         List<Coroutine> coroutines = new List<Coroutine>();
         Instantiate(boards[cardAmount-1]);
         aiHand = GameObject.Find(AI_HAND_NAME);
@@ -73,16 +86,24 @@ public class GameController : MonoBehaviour
             int playerType = (int) playerCards[i].GetComponent<NFTGameObjectInfo>().weaponType;
             if (aiType == 0 && playerType == 1) {
                 aiPoints++;
+                singleMatchesState[i] = SingleMatchState.AIWinner;
             } else if (aiType == 0 && playerType == 2) {
                 playerPoints++;
+                singleMatchesState[i] = SingleMatchState.PlayerWinner;
             } else if (aiType == 1 && playerType == 2) {
                 aiPoints++;
+                singleMatchesState[i] = SingleMatchState.AIWinner;
             } else if (aiType == 1 && playerType == 0) {
                 playerPoints++;
+                singleMatchesState[i] = SingleMatchState.PlayerWinner;
             } else if (aiType == 2 && playerType == 0) {
                 aiPoints++;
+                singleMatchesState[i] = SingleMatchState.AIWinner;
             } else if (aiType == 2 && playerType == 1) {
                 playerPoints++;
+                singleMatchesState[i] = SingleMatchState.PlayerWinner;
+            } else {
+                singleMatchesState[i] = SingleMatchState.Tie;
             }
         }
         Debug.Log(aiPoints.ToString() + ", " + playerPoints.ToString());
@@ -130,14 +151,17 @@ public class GameController : MonoBehaviour
                 if (isAI) {
                     aiCards[handIndex].GetComponent<SpriteRenderer>().sprite = nftSprite;
                     aiTotalPower += aiCards[handIndex].GetComponent<NFTGameObjectInfo>().Initialize(currentMetadata);
+                    GameObject.Find(AI_TOTAL_POWER_NAME).GetComponent<TextMeshProUGUI>().text = "Total power: " + aiTotalPower;
 
                 } else {
                     playerCards[handIndex].GetComponent<SpriteRenderer>().sprite = nftSprite;
                     playerTotalPower += playerCards[handIndex].GetComponent<NFTGameObjectInfo>().Initialize(currentMetadata);
+                    GameObject.Find(PLAYER_TOTAL_POWER_NAME).GetComponent<TextMeshProUGUI>().text = "Total power: " + playerTotalPower;
                 }
+                reorderButton.SetActive(playerTotalPower > aiTotalPower);
             }
 
-            switch (webRequest.result)
+            /* switch (webRequest.result)
             {
                 case UnityWebRequest.Result.ConnectionError:
                 case UnityWebRequest.Result.DataProcessingError:
@@ -149,7 +173,7 @@ public class GameController : MonoBehaviour
                 case UnityWebRequest.Result.Success:
                     Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
                     break;
-            }
+            } */
         }
     }
 }
