@@ -23,11 +23,14 @@ public class GameController : MonoBehaviour
     private const string AI_TOTAL_POWER_NAME = "TotalPowerAI";
     private const string PLAYER_TOTAL_POWER_NAME = "TotalPowerPlayer";
     private const string REORDER_BUTTON_NAME = "ReorderButton";
+    private const string OUTLINE_NAME = "Outline";
     private const int LAST_NFT_ID = 999;
 
     public int cardAmount;
     public List<GameObject> boards;
     public GameObject reorderButton;
+    public GameObject cancelReorderButton;
+    public GameObject swapButton;
     public GameObject aiHand;
     public GameObject playerHand;
     public List<GameObject> aiCards;
@@ -39,6 +42,8 @@ public class GameController : MonoBehaviour
     public List<int> playerNfts;
     public List<int> aiNfts;
     public SingleMatchState[] singleMatchesState; 
+    public bool isReorderSelectionActive = false;
+    public List<GameObject> reorderSelectedNfts;
 
     private Dictionary<int, NFTMetadata> metadata;
     private Texture2D nftImage;
@@ -49,6 +54,7 @@ public class GameController : MonoBehaviour
         aiCards = new List<GameObject>();
         playerCards = new List<GameObject>();
         singleMatchesState = new SingleMatchState[cardAmount];
+        reorderSelectedNfts = new List<GameObject>();
         List<Coroutine> coroutines = new List<Coroutine>();
         Instantiate(boards[cardAmount-1]);
         aiHand = GameObject.Find(AI_HAND_NAME);
@@ -60,7 +66,7 @@ public class GameController : MonoBehaviour
             }
         }
         foreach( Transform item in playerHand.GetComponentsInChildren<Transform>()) {
-            if (item.name != PLAYER_HAND_NAME) {
+            if (item.name != PLAYER_HAND_NAME && !item.name.Contains(OUTLINE_NAME)) {
                 playerCards.Add(item.gameObject);
             }
         }
@@ -76,7 +82,6 @@ public class GameController : MonoBehaviour
         Scene scene = SceneManager.GetActiveScene(); 
         SceneManager.LoadScene(scene.name);
     }
-
 
     public void Battle() {
         int aiPoints = 0;
@@ -107,6 +112,30 @@ public class GameController : MonoBehaviour
             }
         }
         Debug.Log(aiPoints.ToString() + ", " + playerPoints.ToString());
+    }
+
+    public void ToggleReorderSelection() {
+        isReorderSelectionActive = !isReorderSelectionActive;
+        reorderButton.SetActive(!isReorderSelectionActive);
+        cancelReorderButton.SetActive(isReorderSelectionActive);
+    }
+
+    public bool selectReorderNFT(GameObject selectedItem) {
+        bool wasItemAdded = false;
+        if (reorderSelectedNfts.Count < 2 && !reorderSelectedNfts.Contains(selectedItem)) {
+            reorderSelectedNfts.Add(selectedItem);
+            wasItemAdded = true;
+        } else {
+            if (reorderSelectedNfts.Contains(selectedItem)) {
+                reorderSelectedNfts.Remove(selectedItem);
+            }
+        }
+        swapButton.SetActive(reorderSelectedNfts.Count == 2);
+        return wasItemAdded;
+    }
+
+    public void SwapNFTs() {
+        
     }
 
     private void GenerateRandomMatch() {
