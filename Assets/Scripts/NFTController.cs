@@ -6,13 +6,33 @@ public class NFTController : MonoBehaviour
 {
     private const string GAME_CONTROLLER_NAME = "GameController";
     public bool isSelected = false;
+    public float lerpSpeed = 5f;
+    public Vector3 objectivePosition;
+    public Vector3 startingPosition = Vector3.zero;
+    public float lerp = 1;
     private SpriteRenderer spriteRenderer;
     private GameController gameController;
-    void Start()
+    
+    public void Swap(Vector3 objectivePosition) {
+        startingPosition = transform.position;
+        this.objectivePosition = objectivePosition;
+        lerp = 0;
+        spriteRenderer.enabled = false;
+    }
+
+    private void Start()
     {
         spriteRenderer = transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>();
         spriteRenderer.enabled = false;
         gameController = GameObject.Find(GAME_CONTROLLER_NAME).GetComponent<GameController>();
+    }
+
+    private void Update() {
+        if (lerp < 1) {
+            Vector3 positon = Vector3.Lerp(startingPosition, objectivePosition, lerp);
+            transform.position = positon;
+            lerp += Mathf.Min(lerpSpeed * Time.deltaTime, 1f);
+        }
     }
 
     private void OnMouseEnter() {

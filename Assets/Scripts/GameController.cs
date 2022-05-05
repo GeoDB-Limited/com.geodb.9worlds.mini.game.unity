@@ -135,7 +135,15 @@ public class GameController : MonoBehaviour
     }
 
     public void SwapNFTs() {
-        
+        int firstSelectedIndex = playerCards.IndexOf(reorderSelectedNfts[0]);
+        int secondSelectedIndex = playerCards.IndexOf(reorderSelectedNfts[1]);
+        playerCards[firstSelectedIndex] = reorderSelectedNfts[1];
+        playerCards[secondSelectedIndex] = reorderSelectedNfts[0];
+        reorderSelectedNfts[0].GetComponent<NFTController>().Swap(reorderSelectedNfts[1].transform.position);
+        reorderSelectedNfts[1].GetComponent<NFTController>().Swap(reorderSelectedNfts[0].transform.position);
+        swapButton.SetActive(false);
+        reorderButton.SetActive(false);
+        cancelReorderButton.SetActive(false);
     }
 
     private void GenerateRandomMatch() {

@@ -411,6 +411,7 @@ GameObject:
   - component: {fileID: 3507442074891024313}
   - component: {fileID: 7291501384030434045}
   - component: {fileID: 2212741120874754800}
+  - component: {fileID: 6783241923907520407}
   m_Layer: 0
   m_Name: NFT1
   m_TagString: NFT
@@ -526,6 +527,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.6329418, y: 2.3111713}
   m_EdgeRadius: 0
+--- !u!114 &6783241923907520407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3071250569509691654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cab50de71db2495184b9cb1c5ea8b5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isSelected: 0
+  lerpSpeed: 5
+  objectivePosition: {x: 0, y: 0, z: 0}
+  startingPosition: {x: 0, y: 0, z: 0}
+  lerp: 1
 --- !u!1 &3883704568547552224
 GameObject:
   m_ObjectHideFlags: 0
@@ -571,6 +589,7 @@ GameObject:
   - component: {fileID: 8752483140048118600}
   - component: {fileID: 1003348578077500844}
   - component: {fileID: 1103525266834647129}
+  - component: {fileID: 1878290639326347593}
   m_Layer: 0
   m_Name: NFT2
   m_TagString: NFT
@@ -686,6 +705,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.6329418, y: 2.3111713}
   m_EdgeRadius: 0
+--- !u!114 &1878290639326347593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5194147214643690406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cab50de71db2495184b9cb1c5ea8b5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isSelected: 0
+  lerpSpeed: 5
+  objectivePosition: {x: 0, y: 0, z: 0}
+  startingPosition: {x: 0, y: 0, z: 0}
+  lerp: 1
 --- !u!1 &7469462345340347732
 GameObject:
   m_ObjectHideFlags: 0

@@ -1100,7 +1100,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2125420683}
         m_TargetAssemblyTypeName: GameController, Assembly-CSharp
-        m_MethodName: ToggleReorderSelection
+        m_MethodName: SwapNFTs
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2025,7 +2025,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d5c2067e3a0f4363967805ad1ce36ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardAmount: 5
+  cardAmount: 2
   boards:
   - {fileID: 4344219589467813245, guid: 26366c0ffb22947b9b2cf45cae6c5144, type: 3}
   - {fileID: 7469462345340347732, guid: ef17ee752fad540dd88fb2f105c9f7e2, type: 3}
