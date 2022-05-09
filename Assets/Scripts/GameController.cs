@@ -25,6 +25,7 @@ public class GameController : MonoBehaviour
     private const string REORDER_BUTTON_NAME = "ReorderButton";
     private const string OUTLINE_NAME = "Outline";
     private const string FRAME_NAME = "Frame";
+    private const string WIN_INDICATOR_NAME = "WinIndicator";
 
     private const int LAST_NFT_ID = 999;
 
@@ -64,12 +65,12 @@ public class GameController : MonoBehaviour
         playerHand = GameObject.Find(PLAYER_HAND_NAME);
         GenerateRandomMatch();
         foreach( Transform item in aiHand.GetComponentsInChildren<Transform>()) {
-            if (item.name != AI_HAND_NAME && !item.name.Contains(FRAME_NAME)) {
+            if (item.name != AI_HAND_NAME && !item.name.Contains(FRAME_NAME) && !item.name.Contains(WIN_INDICATOR_NAME)) {
                aiCards.Add(item.gameObject);
             }
         }
         foreach( Transform item in playerHand.GetComponentsInChildren<Transform>()) {
-            if (item.name != PLAYER_HAND_NAME && !item.name.Contains(OUTLINE_NAME) && !item.name.Contains(FRAME_NAME)) {
+            if (item.name != PLAYER_HAND_NAME && !item.name.Contains(OUTLINE_NAME) && !item.name.Contains(FRAME_NAME) && !item.name.Contains(WIN_INDICATOR_NAME)) {
                 playerCards.Add(item.gameObject);
             }
         }
@@ -198,12 +199,12 @@ public class GameController : MonoBehaviour
                 if (isAI) {
                     aiCards[handIndex].GetComponent<SpriteRenderer>().sprite = nftSprite;
                     aiTotalPower += aiCards[handIndex].GetComponent<NFTGameObjectInfo>().Initialize(currentMetadata);
-                    GameObject.Find(AI_TOTAL_POWER_NAME).GetComponent<TextMeshProUGUI>().text = "Total power: " + aiTotalPower;
+                    GameObject.Find(AI_TOTAL_POWER_NAME).GetComponent<TextMeshProUGUI>().text = "Power: " + aiTotalPower;
 
                 } else {
                     playerCards[handIndex].GetComponent<SpriteRenderer>().sprite = nftSprite;
                     playerTotalPower += playerCards[handIndex].GetComponent<NFTGameObjectInfo>().Initialize(currentMetadata);
-                    GameObject.Find(PLAYER_TOTAL_POWER_NAME).GetComponent<TextMeshProUGUI>().text = "Total power: " + playerTotalPower;
+                    GameObject.Find(PLAYER_TOTAL_POWER_NAME).GetComponent<TextMeshProUGUI>().text = "Power: " + playerTotalPower;
                 }
                 reorderButton.SetActive(playerTotalPower > aiTotalPower && cardAmount > 1);
             }
