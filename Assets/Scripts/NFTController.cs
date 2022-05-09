@@ -5,6 +5,8 @@ using UnityEngine;
 public class NFTController : MonoBehaviour
 {
     private const string GAME_CONTROLLER_NAME = "GameController";
+    private const string OUTLINE_NAME = "Outline";
+    
     public bool isSelected = false;
     public float lerpSpeed = 5f;
     public Vector3 objectivePosition;
@@ -22,7 +24,7 @@ public class NFTController : MonoBehaviour
 
     private void Start()
     {
-        spriteRenderer = transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>();
+        spriteRenderer = transform.Find(OUTLINE_NAME).gameObject.GetComponent<SpriteRenderer>();
         spriteRenderer.enabled = false;
         gameController = GameObject.Find(GAME_CONTROLLER_NAME).GetComponent<GameController>();
     }

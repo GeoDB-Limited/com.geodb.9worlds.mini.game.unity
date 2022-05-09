@@ -24,6 +24,8 @@ public class GameController : MonoBehaviour
     private const string PLAYER_TOTAL_POWER_NAME = "TotalPowerPlayer";
     private const string REORDER_BUTTON_NAME = "ReorderButton";
     private const string OUTLINE_NAME = "Outline";
+    private const string FRAME_NAME = "Frame";
+
     private const int LAST_NFT_ID = 999;
 
     public int cardAmount;
@@ -62,12 +64,12 @@ public class GameController : MonoBehaviour
         playerHand = GameObject.Find(PLAYER_HAND_NAME);
         GenerateRandomMatch();
         foreach( Transform item in aiHand.GetComponentsInChildren<Transform>()) {
-            if (item.name != AI_HAND_NAME) {
+            if (item.name != AI_HAND_NAME && !item.name.Contains(FRAME_NAME)) {
                aiCards.Add(item.gameObject);
             }
         }
         foreach( Transform item in playerHand.GetComponentsInChildren<Transform>()) {
-            if (item.name != PLAYER_HAND_NAME && !item.name.Contains(OUTLINE_NAME)) {
+            if (item.name != PLAYER_HAND_NAME && !item.name.Contains(OUTLINE_NAME) && !item.name.Contains(FRAME_NAME)) {
                 playerCards.Add(item.gameObject);
             }
         }
