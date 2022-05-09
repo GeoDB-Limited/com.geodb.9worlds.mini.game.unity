@@ -31,6 +31,7 @@ public class GameController : MonoBehaviour
     public GameObject reorderButton;
     public GameObject cancelReorderButton;
     public GameObject swapButton;
+    public GameObject result;
     public GameObject aiHand;
     public GameObject playerHand;
     public List<GameObject> aiCards;
@@ -110,6 +111,13 @@ public class GameController : MonoBehaviour
             } else {
                 singleMatchesState[i] = SingleMatchState.Tie;
             }
+        }
+        if (aiPoints > playerPoints) {
+            result.GetComponent<TextMeshProUGUI>().text = "Result:\n" + playerPoints + " - " + aiPoints + "\n You Lose!";
+        } else if (aiPoints < playerPoints) {
+            result.GetComponent<TextMeshProUGUI>().text = "Result:\n" + playerPoints + " - " + aiPoints + "\n You Win!";
+        } else {
+            result.GetComponent<TextMeshProUGUI>().text = "Result:\n" + playerPoints + " - " + aiPoints + "\n Tie!";
         }
         Debug.Log(aiPoints.ToString() + ", " + playerPoints.ToString());
     }
@@ -195,7 +203,7 @@ public class GameController : MonoBehaviour
                     playerTotalPower += playerCards[handIndex].GetComponent<NFTGameObjectInfo>().Initialize(currentMetadata);
                     GameObject.Find(PLAYER_TOTAL_POWER_NAME).GetComponent<TextMeshProUGUI>().text = "Total power: " + playerTotalPower;
                 }
-                reorderButton.SetActive(playerTotalPower > aiTotalPower);
+                reorderButton.SetActive(playerTotalPower > aiTotalPower && cardAmount > 1);
             }
 
             /* switch (webRequest.result)

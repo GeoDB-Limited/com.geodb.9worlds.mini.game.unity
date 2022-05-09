@@ -22,7 +22,7 @@ AssetImportWorker0
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-54732
+55210
 Successfully changed project path to: /Users/alvaro/Documents/geodb/com.geodb.9worlds.mini.game.unity
 /Users/alvaro/Documents/geodb/com.geodb.9worlds.mini.game.unity
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
@@ -54,7 +54,7 @@ Successfully changed project path to: /Users/alvaro/Documents/geodb/com.geodb.9w
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Refreshing native plugins compatible for Editor in 86.49 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 77.10 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2021.3.1f1 (3b70a0754835)
 [Subsystems] Discovering subsystems at path /Applications/Unity/Hub/Editor/2021.3.1f1/Unity.app/Contents/Resources/UnitySubsystems
@@ -69,37 +69,37 @@ Initialize mono
 Mono path[0] = '/Applications/Unity/Hub/Editor/2021.3.1f1/Unity.app/Contents/Managed'
 Mono path[1] = '/Applications/Unity/Hub/Editor/2021.3.1f1/Unity.app/Contents/MonoBleedingEdge/lib/mono/unityjit-macos'
 Mono config path = '/Applications/Unity/Hub/Editor/2021.3.1f1/Unity.app/Contents/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56581
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56525
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: /Applications/Unity/Hub/Editor/2021.3.1f1/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
 Register platform support module: /Applications/Unity/Hub/Editor/2021.3.1f1/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
-Registered in 0.000822 seconds.
+Registered in 0.001048 seconds.
 Native extension for OSXStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 75.07 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 79.44 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.385 seconds
+- Completed reload, in  0.394 seconds
 Domain Reload Profiling:
-	ReloadAssembly (386ms)
-		BeginReloadAssembly (27ms)
+	ReloadAssembly (395ms)
+		BeginReloadAssembly (28ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (0ms)
-		EndReloadAssembly (294ms)
-			LoadAssemblies (26ms)
+		EndReloadAssembly (301ms)
+			LoadAssemblies (28ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (63ms)
+			SetupTypeCache (64ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (18ms)
-			SetupLoadedEditorAssemblies (187ms)
+			RebuildScriptCaches (19ms)
+			SetupLoadedEditorAssemblies (192ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (4ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (75ms)
+				RefreshPlugins (79ms)
 				BeforeProcessingInitializeOnLoad (1ms)
 				ProcessInitializeOnLoadAttributes (82ms)
 				ProcessInitializeOnLoadMethodAttributes (25ms)
@@ -109,40 +109,40 @@ Domain Reload Profiling:
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.001517 seconds.
+Registered in 0.002006 seconds.
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory doesn't match image /Users/alvaro/Documents/geodb/com.geodb.9worlds.mini.game.unity/Library/PackageCache/com.unity.visualscripting@1.7.6/Editor/VisualScripting.Core/Dependencies/YamlDotNet/Unity.VisualScripting.YamlDotNet.dll
 Symbol file LoadedFromMemory is not a mono symbol file
 Symbol file LoadedFromMemory doesn't match image /Users/alvaro/Documents/geodb/com.geodb.9worlds.mini.game.unity/Library/PackageCache/com.unity.visualscripting@1.7.6/Editor/VisualScripting.Core/Dependencies/DotNetZip/Unity.VisualScripting.IonicZip.dll
 Native extension for OSXStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 80.21 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 78.27 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.696 seconds
+- Completed reload, in  0.682 seconds
 Domain Reload Profiling:
-	ReloadAssembly (697ms)
-		BeginReloadAssembly (55ms)
+	ReloadAssembly (682ms)
+		BeginReloadAssembly (53ms)
 			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (3ms)
+			DisableScriptedObjects (4ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (16ms)
-		EndReloadAssembly (577ms)
-			LoadAssemblies (32ms)
+			CreateAndSetChildDomain (12ms)
+		EndReloadAssembly (564ms)
+			LoadAssemblies (41ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (147ms)
+			SetupTypeCache (144ms)
 			ReleaseScriptCaches (0ms)
 			RebuildScriptCaches (38ms)
-			SetupLoadedEditorAssemblies (321ms)
+			SetupLoadedEditorAssemblies (306ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (2ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (80ms)
-				BeforeProcessingInitializeOnLoad (61ms)
-				ProcessInitializeOnLoadAttributes (155ms)
+				RefreshPlugins (78ms)
+				BeforeProcessingInitializeOnLoad (62ms)
+				ProcessInitializeOnLoadAttributes (141ms)
 				ProcessInitializeOnLoadMethodAttributes (21ms)
-				AfterProcessingInitializeOnLoad (2ms)
+				AfterProcessingInitializeOnLoad (1ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (2ms)
@@ -150,13 +150,13 @@ Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
 Launching external process: /Applications/Unity/Hub/Editor/2021.3.1f1/Unity.app/Contents/Tools/UnityShaderCompiler
-Launched and connected shader compiler UnityShaderCompiler after 0.08 seconds
-Refreshing native plugins compatible for Editor in 0.52 ms, found 3 plugins.
+Launched and connected shader compiler UnityShaderCompiler after 0.05 seconds
+Refreshing native plugins compatible for Editor in 0.41 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 3968 Unused Serialized files (Serialized files now loaded: 0)
 Unloading 38 unused Assets / (73.3 KB). Loaded Objects now: 4425.
 Memory consumption went from 262.1 MB to 262.0 MB.
-Total: 2.903458 ms (FindLiveObjects: 0.116042 ms CreateObjectMapping: 0.048250 ms MarkObjects: 2.669084 ms  DeleteObjects: 0.069208 ms)
+Total: 2.395083 ms (FindLiveObjects: 0.105792 ms CreateObjectMapping: 0.049000 ms MarkObjects: 2.183333 ms  DeleteObjects: 0.056333 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
@@ -170,76 +170,986 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 66151.092431 seconds.
-  path: Assets/Prefabs/Board-4vs4.prefab
-  artifactKey: Guid(ef580ceffca9545d6b7d14b7c256c689) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Board-4vs4.prefab using Guid(ef580ceffca9545d6b7d14b7c256c689) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '056ab9cfeda446cf08fe40f086a97b8a') in 0.089627 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 8.796985 seconds.
-  path: Assets/Prefabs/Board-3vs3.prefab
-  artifactKey: Guid(85735cd26991144c4b0ea1ea71aaf9a3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Board-3vs3.prefab using Guid(85735cd26991144c4b0ea1ea71aaf9a3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6cadc59c4512982c43189f426c8a43d2') in 0.009959 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 6.165922 seconds.
-  path: Assets/Prefabs/Board-2vs2.prefab
-  artifactKey: Guid(ef17ee752fad540dd88fb2f105c9f7e2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Board-2vs2.prefab using Guid(ef17ee752fad540dd88fb2f105c9f7e2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3610c12d3dd53b65cc6630ceaf84946e') in 0.009629 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 6.678979 seconds.
-  path: Assets/Prefabs/Board-1vs1.prefab
-  artifactKey: Guid(26366c0ffb22947b9b2cf45cae6c5144) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Board-1vs1.prefab using Guid(26366c0ffb22947b9b2cf45cae6c5144) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '759a46c1e29254d4a9d1de536958f549') in 0.009637 seconds 
+  Time since last request: 10888.356202 seconds.
+  path: Assets/Viking_RPG_UI/Demo.unity
+  artifactKey: Guid(beb93d3d71363e54f958915ee34d6a5c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Demo.unity using Guid(beb93d3d71363e54f958915ee34d6a5c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '942ae152d6438af825b22bc18e64700c') in 0.009909 seconds 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.001413 seconds.
+Registered in 0.001751 seconds.
 Begin MonoManager ReloadAssembly
-Thread 0x2abfc7000 may have been prematurely finalized
+Thread 0x17d71f000 may have been prematurely finalized
 Symbol file LoadedFromMemory doesn't match image /Users/alvaro/Documents/geodb/com.geodb.9worlds.mini.game.unity/Library/PackageCache/com.unity.visualscripting@1.7.6/Editor/VisualScripting.Core/Dependencies/YamlDotNet/Unity.VisualScripting.YamlDotNet.dll
 Symbol file LoadedFromMemory is not a mono symbol file
 Symbol file LoadedFromMemory doesn't match image /Users/alvaro/Documents/geodb/com.geodb.9worlds.mini.game.unity/Library/PackageCache/com.unity.visualscripting@1.7.6/Editor/VisualScripting.Core/Dependencies/DotNetZip/Unity.VisualScripting.IonicZip.dll
 Native extension for OSXStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.50 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 0.53 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.672 seconds
+- Completed reload, in  0.555 seconds
 Domain Reload Profiling:
-	ReloadAssembly (673ms)
-		BeginReloadAssembly (76ms)
+	ReloadAssembly (555ms)
+		BeginReloadAssembly (69ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (4ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (32ms)
-		EndReloadAssembly (538ms)
-			LoadAssemblies (39ms)
+			CreateAndSetChildDomain (22ms)
+		EndReloadAssembly (429ms)
+			LoadAssemblies (34ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (208ms)
+			SetupTypeCache (140ms)
 			ReleaseScriptCaches (1ms)
 			RebuildScriptCaches (30ms)
-			SetupLoadedEditorAssemblies (200ms)
+			SetupLoadedEditorAssemblies (194ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (5ms)
 				SetLoadedEditorAssemblies (0ms)
 				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (48ms)
-				ProcessInitializeOnLoadAttributes (125ms)
+				BeforeProcessingInitializeOnLoad (42ms)
+				ProcessInitializeOnLoadAttributes (124ms)
 				ProcessInitializeOnLoadMethodAttributes (20ms)
 				AfterProcessingInitializeOnLoad (1ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (9ms)
+			AwakeInstancesAfterBackupRestoration (4ms)
 Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.83 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 0.93 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 3945 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 25 unused Assets / (49.8 KB). Loaded Objects now: 4434.
-Memory consumption went from 269.2 MB to 269.1 MB.
-Total: 2.176417 ms (FindLiveObjects: 0.103083 ms CreateObjectMapping: 0.045042 ms MarkObjects: 1.952292 ms  DeleteObjects: 0.075583 ms)
+Unloading 25 unused Assets / (49.6 KB). Loaded Objects now: 4428.
+Memory consumption went from 260.2 MB to 260.1 MB.
+Total: 2.217667 ms (FindLiveObjects: 0.117708 ms CreateObjectMapping: 0.048000 ms MarkObjects: 1.997375 ms  DeleteObjects: 0.054125 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 20.228281 seconds.
+  path: Assets/Viking_RPG_UI/GUI_ parts
+  artifactKey: Guid(a6ec826ecb0d3754f9006a554736e91d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/GUI_ parts using Guid(a6ec826ecb0d3754f9006a554736e91d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '540ca8737f2d5323b59712d2f42a4fc1') in 0.008111 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.730313 seconds.
+  path: Assets/Viking_RPG_UI/GUI_ parts/Button_long_a_4096_512.png
+  artifactKey: Guid(6c3d92f30d3a650448007cfa5c1ffcac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/GUI_ parts/Button_long_a_4096_512.png using Guid(6c3d92f30d3a650448007cfa5c1ffcac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fef749cb7791a248f05b801e443e5ca8') in 0.494234 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000103 seconds.
+  path: Assets/Viking_RPG_UI/GUI_ parts/Frame_1_a.png
+  artifactKey: Guid(991b2e82a4b79ac4ea874f2aecaf97df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/GUI_ parts/Frame_1_a.png using Guid(991b2e82a4b79ac4ea874f2aecaf97df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '464043588bd69ae0dcf41dd7dc074e32') in 0.129347 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000040 seconds.
+  path: Assets/Viking_RPG_UI/GUI_ parts/Main_menu_Background_1408_2176.png
+  artifactKey: Guid(7ee092855ea5b414fb5175fe49ea672c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/GUI_ parts/Main_menu_Background_1408_2176.png using Guid(7ee092855ea5b414fb5175fe49ea672c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '81c0ee1a74765854bbb85f5ec52a8ceb') in 0.176480 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000042 seconds.
+  path: Assets/Viking_RPG_UI/GUI_ parts/Hp_bar_back_1024_1024.png
+  artifactKey: Guid(d30d4bfc25ae81347b06289c2be1e1d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/GUI_ parts/Hp_bar_back_1024_1024.png using Guid(d30d4bfc25ae81347b06289c2be1e1d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5edc2b0185a3af9f32e702cb8f680e83') in 0.040046 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000059 seconds.
+  path: Assets/Viking_RPG_UI/GUI_ parts/Button_Small_2_1024_512.png
+  artifactKey: Guid(cd57c2489f3174c4aa330878ee15a843) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/GUI_ parts/Button_Small_2_1024_512.png using Guid(cd57c2489f3174c4aa330878ee15a843) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4e04e3c0d2cbbb4581469890fa026d6b') in 0.024801 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000043 seconds.
+  path: Assets/Viking_RPG_UI/GUI_ parts/Loading_bar_320_4128.png
+  artifactKey: Guid(62ab540c9fee3a14ea40cd6f976887a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/GUI_ parts/Loading_bar_320_4128.png using Guid(62ab540c9fee3a14ea40cd6f976887a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1ab4c13e43c94a99be485346a670ec92') in 0.024479 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000045 seconds.
+  path: Assets/Viking_RPG_UI/GUI_ parts/Frames_3_a3.png
+  artifactKey: Guid(0ba98e6d880de5a43bdcce3bfa016a87) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/GUI_ parts/Frames_3_a3.png using Guid(0ba98e6d880de5a43bdcce3bfa016a87) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '45416af35450bd556898de7984946f97') in 0.059122 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/Viking_RPG_UI/GUI_ parts/Main_menu_Background_2_1408_2176.png
+  artifactKey: Guid(f4511eaed373c974790db8ce3b116fde) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/GUI_ parts/Main_menu_Background_2_1408_2176.png using Guid(f4511eaed373c974790db8ce3b116fde) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2f68ffef6560c38c0ae710f1b2a6340e') in 0.097902 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000068 seconds.
+  path: Assets/Viking_RPG_UI/GUI_ parts/Frame_1_a3.png
+  artifactKey: Guid(b36e5d43b2485eb42998a7da4cc50f4d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/GUI_ parts/Frame_1_a3.png using Guid(b36e5d43b2485eb42998a7da4cc50f4d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '38fc0c9253c01482a19fb3056da7c1fc') in 0.114755 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/Viking_RPG_UI/GUI_ parts/Hp_bar_back_blue_128_1568.png
+  artifactKey: Guid(01e94813811119f4dabdcd43dd1efec8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/GUI_ parts/Hp_bar_back_blue_128_1568.png using Guid(01e94813811119f4dabdcd43dd1efec8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5d950405dfeec2002a87759e4cdf65b3') in 0.014934 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/Viking_RPG_UI/GUI_ parts/Hp_bar_back_256_256.png
+  artifactKey: Guid(32e6fdf231345dd4d97af6742d395cbc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/GUI_ parts/Hp_bar_back_256_256.png using Guid(32e6fdf231345dd4d97af6742d395cbc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '81bc884a237db098db24120e41b853e0') in 0.009342 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000041 seconds.
+  path: Assets/Viking_RPG_UI/GUI_ parts/Loading_bar_frame_320_4128.png
+  artifactKey: Guid(224a5cc032ea8c74fa2d271069258b98) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/GUI_ parts/Loading_bar_frame_320_4128.png using Guid(224a5cc032ea8c74fa2d271069258b98) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a59de46db079b550af56591c5d4b1a50') in 0.018153 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000053 seconds.
+  path: Assets/Viking_RPG_UI/GUI_ parts/Button_Medium_a_ 2048_512.png
+  artifactKey: Guid(03a2c559b752e6f41908ebed1b439982) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/GUI_ parts/Button_Medium_a_ 2048_512.png using Guid(03a2c559b752e6f41908ebed1b439982) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e9e0671bf55af74df0e9bb1423221fa7') in 0.044929 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000067 seconds.
+  path: Assets/Viking_RPG_UI/GUI_ parts/Frame_map_2048_2048.png
+  artifactKey: Guid(2f5562de45f9a6941967a7777b8651b4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/GUI_ parts/Frame_map_2048_2048.png using Guid(2f5562de45f9a6941967a7777b8651b4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4a4593b24a1b0268a3dcc636c02f1f32') in 0.133461 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000102 seconds.
+  path: Assets/Viking_RPG_UI/GUI_ parts/Button_Very_small.png
+  artifactKey: Guid(befef8dabe36adb4c9a5d2368b01a427) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/GUI_ parts/Button_Very_small.png using Guid(befef8dabe36adb4c9a5d2368b01a427) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '116554ace10eb5e1566abcb51fcd74d9') in 0.010953 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Viking_RPG_UI/GUI_ parts/Frame_back_256_256.png
+  artifactKey: Guid(6e3cd4f6a5d8390438b86a8c3305eb50) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/GUI_ parts/Frame_back_256_256.png using Guid(6e3cd4f6a5d8390438b86a8c3305eb50) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '774da1d2e83181f4b94855071288dd0f') in 0.009273 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000078 seconds.
+  path: Assets/Viking_RPG_UI/GUI_ parts/Main_menu_frame_Bar_2_2624_3904.png
+  artifactKey: Guid(df17b20da2e337d4a92a695c66210a9b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/GUI_ parts/Main_menu_frame_Bar_2_2624_3904.png using Guid(df17b20da2e337d4a92a695c66210a9b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f7921ecfd83402a99bd51472fbd13f24') in 0.136287 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000042 seconds.
+  path: Assets/Viking_RPG_UI/GUI_ parts/Viking_Loading_Menu_3840_2176.png
+  artifactKey: Guid(f3db5e9fff320514c85245280d202f2c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/GUI_ parts/Viking_Loading_Menu_3840_2176.png using Guid(f3db5e9fff320514c85245280d202f2c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e659c69b18b0aea8ef8370190e0654b3') in 0.139090 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000051 seconds.
+  path: Assets/Viking_RPG_UI/GUI_ parts/Frame_double_256_256.png
+  artifactKey: Guid(15852724e1304424b90a7d0988568015) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/GUI_ parts/Frame_double_256_256.png using Guid(15852724e1304424b90a7d0988568015) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a92f739f385acacaf2e68c4c23c7b8fb') in 0.008319 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Viking_RPG_UI/GUI_ parts/Frame_Square_512_512.png
+  artifactKey: Guid(b20be2e3695ade8438c44d9ba95dcbcb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/GUI_ parts/Frame_Square_512_512.png using Guid(b20be2e3695ade8438c44d9ba95dcbcb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'be5760ea0463d2cbe26c06ee4eaf2645') in 0.013139 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/Viking_RPG_UI/GUI_ parts/Scroll_line_back_128_1536.png
+  artifactKey: Guid(d30c4f7ec685baf40ac0428ab8a6d676) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/GUI_ parts/Scroll_line_back_128_1536.png using Guid(d30c4f7ec685baf40ac0428ab8a6d676) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1b80785f3a4ce3f17e35efa7d25c0e7d') in 0.013556 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000066 seconds.
+  path: Assets/Viking_RPG_UI/GUI_ parts/Button_Small_c_1024_512.png
+  artifactKey: Guid(f5e97908a4cf0b64fa0a7668ebe67c47) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/GUI_ parts/Button_Small_c_1024_512.png using Guid(f5e97908a4cf0b64fa0a7668ebe67c47) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0e6d196bc0aa8617db79f112f85d045a') in 0.026931 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000067 seconds.
+  path: Assets/Viking_RPG_UI/GUI_ parts/Hp_bar_256_256.png
+  artifactKey: Guid(0b6279760e3966b449f828caa590f2ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/GUI_ parts/Hp_bar_256_256.png using Guid(0b6279760e3966b449f828caa590f2ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'af94f78f1dd460da3182ba31d84740c9') in 0.009649 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/Viking_RPG_UI/GUI_ parts/Button_Very_small_2_256_512.png
+  artifactKey: Guid(ea89b74def3f803468f04f98c24236a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/GUI_ parts/Button_Very_small_2_256_512.png using Guid(ea89b74def3f803468f04f98c24236a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f6042cf284a2eddcd50b7961dc2dda16') in 0.009621 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Viking_RPG_UI/GUI_ parts/Hp_bar_back_red_128_1568.png
+  artifactKey: Guid(074e013a6de08854bb2e23f9ef53a657) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/GUI_ parts/Hp_bar_back_red_128_1568.png using Guid(074e013a6de08854bb2e23f9ef53a657) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '90e130ff470909c27f25796964f03778') in 0.013906 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000063 seconds.
+  path: Assets/Viking_RPG_UI/GUI_ parts/Frames_2_b.png
+  artifactKey: Guid(e6c7ab382d9254740924cabe619f4d68) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/GUI_ parts/Frames_2_b.png using Guid(e6c7ab382d9254740924cabe619f4d68) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c508ede48d34e3be6f70d79ac324051a') in 0.062723 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000071 seconds.
+  path: Assets/Viking_RPG_UI/GUI_ parts/Button_Small_b_1024_512.png
+  artifactKey: Guid(00cadf61c5bbd1048abd74a19b93f31f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/GUI_ parts/Button_Small_b_1024_512.png using Guid(00cadf61c5bbd1048abd74a19b93f31f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8f5b645aab7cb5f2c9e3cfcc2bce3b60') in 0.025468 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000049 seconds.
+  path: Assets/Viking_RPG_UI/GUI_ parts/Hp_bar_with_back_256_256.png
+  artifactKey: Guid(ade79933c36df7c4c882afa4f8c4bfad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/GUI_ parts/Hp_bar_with_back_256_256.png using Guid(ade79933c36df7c4c882afa4f8c4bfad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5ae2c6e6188bdd76092253a7ed53bb00') in 0.010527 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000044 seconds.
+  path: Assets/Viking_RPG_UI/GUI_ parts/Scroll_line_128_1536.png
+  artifactKey: Guid(c4d3dab382c62ed479784883972f2a56) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/GUI_ parts/Scroll_line_128_1536.png using Guid(c4d3dab382c62ed479784883972f2a56) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '43814d2df67d473e00c613659412da66') in 0.012946 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/Viking_RPG_UI/GUI_ parts/Button_Very_small_256_512.png
+  artifactKey: Guid(11d346adf90a9464a8fad6969da2d56e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/GUI_ parts/Button_Very_small_256_512.png using Guid(11d346adf90a9464a8fad6969da2d56e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4deeea99b2b188476a1d81cd5c170e89') in 0.011908 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000083 seconds.
+  path: Assets/Viking_RPG_UI/GUI_ parts/Button_Medium_2 _2048_512.png
+  artifactKey: Guid(f873fcda611f1734b9b5496f2a0febaf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/GUI_ parts/Button_Medium_2 _2048_512.png using Guid(f873fcda611f1734b9b5496f2a0febaf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cf75803bd07c2e879f4f73ea5f18e495') in 0.046598 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000042 seconds.
+  path: Assets/Viking_RPG_UI/GUI_ parts/Frames_3_a.png
+  artifactKey: Guid(e34fd63ac9f78be449a635f1d3f6e235) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/GUI_ parts/Frames_3_a.png using Guid(e34fd63ac9f78be449a635f1d3f6e235) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '62c6e9d898d6c35b37cbeeb56e9cfc20') in 0.068726 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 15.206455 seconds.
+  path: Assets/Scenes/SampleScene.unity
+  artifactKey: Guid(2cda990e2423bbf4892e6590ba056729) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/SampleScene.unity using Guid(2cda990e2423bbf4892e6590ba056729) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd19a2e4f8b407ad17303d1a7412c533e') in 0.001924 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 10.348270 seconds.
+  path: Assets/Viking_RPG_UI/Buttons
+  artifactKey: Guid(67b4d5a22822b4f488cb43ddde9da936) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons using Guid(67b4d5a22822b4f488cb43ddde9da936) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b2ab3899543dc11f4c703fcb2eb2773b') in 0.001630 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.481614 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/No_background_buttons
+  artifactKey: Guid(2b98c2bf4436caf40992fe7539368823) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/No_background_buttons using Guid(2b98c2bf4436caf40992fe7539368823) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '781dc85197f9597a11c2dbd3d11b71e9') in 0.000998 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.607230 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/No_background_buttons/Flat_Icon_1_a.png
+  artifactKey: Guid(f2ce721d56ce42a44a210f74140b6fba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/No_background_buttons/Flat_Icon_1_a.png using Guid(f2ce721d56ce42a44a210f74140b6fba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '73f528c12fb1b061f7240a9f963e1858') in 0.014181 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000044 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/No_background_buttons/Flat_Icon_34_a.png
+  artifactKey: Guid(f3d84d95a56f73b48b4455c63d92e7cd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/No_background_buttons/Flat_Icon_34_a.png using Guid(f3d84d95a56f73b48b4455c63d92e7cd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7b5878688c911b15f333197ed3e35115') in 0.011247 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000052 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/No_background_buttons/Flat_Icon_39_a.png
+  artifactKey: Guid(8c44e172b1f117e4494f39644107a84a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/No_background_buttons/Flat_Icon_39_a.png using Guid(8c44e172b1f117e4494f39644107a84a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8874d3d162a1d35bb3448095cf064ec5') in 0.008861 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000042 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/No_background_buttons/Flat_Icon_7_a.png
+  artifactKey: Guid(68e6a4d1232df0c41a9263bdb27d1d2b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/No_background_buttons/Flat_Icon_7_a.png using Guid(68e6a4d1232df0c41a9263bdb27d1d2b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd95ae29c7e99c258223ac4e545b75e82') in 0.008163 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/No_background_buttons/Flat_Icon_20_a.png
+  artifactKey: Guid(be4c1d3b4c400234cb98b7ba98b18a4b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/No_background_buttons/Flat_Icon_20_a.png using Guid(be4c1d3b4c400234cb98b7ba98b18a4b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bb20ea0068c5a804e882c5d44973c34f') in 0.009079 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/No_background_buttons/Flat_Icon_26_a.png
+  artifactKey: Guid(613326eb935b5d84780574f55603f378) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/No_background_buttons/Flat_Icon_26_a.png using Guid(613326eb935b5d84780574f55603f378) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '724b182d3f21152926606a04a756557a') in 0.008433 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000062 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/No_background_buttons/Flat_Icon_46_a.png
+  artifactKey: Guid(f3f271f95b1542544aba27b0e7462dca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/No_background_buttons/Flat_Icon_46_a.png using Guid(f3f271f95b1542544aba27b0e7462dca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a07529276462502da974a461ae80edb1') in 0.008913 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000041 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/No_background_buttons/Flat_Icon_38_a.png
+  artifactKey: Guid(3bf220323d9a3714ba65d5136de2e7e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/No_background_buttons/Flat_Icon_38_a.png using Guid(3bf220323d9a3714ba65d5136de2e7e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7a85d2151e8802ec1130ca7a8fbb0a0b') in 0.009086 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/No_background_buttons/Flat_Icon_44_a.png
+  artifactKey: Guid(e321cc4baf5afc14ab92ce7a6451589e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/No_background_buttons/Flat_Icon_44_a.png using Guid(e321cc4baf5afc14ab92ce7a6451589e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '753c3ad3a1d558a439fd083af8a65aab') in 0.009235 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/No_background_buttons/Flat_Icon_10_a.png
+  artifactKey: Guid(c8523cbbe34918843914b13b0085d2ef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/No_background_buttons/Flat_Icon_10_a.png using Guid(c8523cbbe34918843914b13b0085d2ef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '96a394c6f26e5c5f0f464e32c853de03') in 0.008733 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/No_background_buttons/Flat_Icon_45_a.png
+  artifactKey: Guid(af26eed7058a7464d9a017b361d9880b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/No_background_buttons/Flat_Icon_45_a.png using Guid(af26eed7058a7464d9a017b361d9880b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fe04cb64830d81292b6c86e81cb12b61') in 0.008868 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000077 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/No_background_buttons/Flat_Icon_32_a.png
+  artifactKey: Guid(6b210eb3b14e25541b7fc5f33b43226e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/No_background_buttons/Flat_Icon_32_a.png using Guid(6b210eb3b14e25541b7fc5f33b43226e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5e233681a7f7028866aada11ccf55e7e') in 0.009872 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/No_background_buttons/Flat_Icon_27_a.png
+  artifactKey: Guid(4ee247a1b888e6d48b56f53c14407c26) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/No_background_buttons/Flat_Icon_27_a.png using Guid(4ee247a1b888e6d48b56f53c14407c26) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9188217a162e745a72a7c2812b735a58') in 0.008419 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000033 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/No_background_buttons/Flat_Icon_29_a.png
+  artifactKey: Guid(2efcc611bca1ce44a8df2c98d9c279b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/No_background_buttons/Flat_Icon_29_a.png using Guid(2efcc611bca1ce44a8df2c98d9c279b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '76dee7521f46037816dba5db5fe28731') in 0.009126 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/No_background_buttons/Flat_Icon_36_a.png
+  artifactKey: Guid(f4e80f34f9d7f0e48a7fc64d50775d83) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/No_background_buttons/Flat_Icon_36_a.png using Guid(f4e80f34f9d7f0e48a7fc64d50775d83) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd78a5125753724450eb26fd181c33a67') in 0.008320 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000066 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/No_background_buttons/Flat_Icon_30_a.png
+  artifactKey: Guid(7d74d04a497c0564a89dce0564316ce0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/No_background_buttons/Flat_Icon_30_a.png using Guid(7d74d04a497c0564a89dce0564316ce0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '213c385c171a817aec4f0a9e0a927009') in 0.007997 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000043 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/No_background_buttons/Flat_Icon_22_a.png
+  artifactKey: Guid(8ed563bfc010d474983518abd3f59e95) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/No_background_buttons/Flat_Icon_22_a.png using Guid(8ed563bfc010d474983518abd3f59e95) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f7c22c18136a9279ca828d59b2ac11a7') in 0.009340 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/No_background_buttons/Flat_Icon_11_a.png
+  artifactKey: Guid(188dd6e03260edb4badc607263eb7002) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/No_background_buttons/Flat_Icon_11_a.png using Guid(188dd6e03260edb4badc607263eb7002) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bc91cde3a0abca5d8bed8ea78479c5b4') in 0.009436 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000058 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/No_background_buttons/Flat_Icon_35_a.png
+  artifactKey: Guid(55348f59589409b40aa18b91a3b71ec8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/No_background_buttons/Flat_Icon_35_a.png using Guid(55348f59589409b40aa18b91a3b71ec8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ea43a22b84d1870798dc15e76edd4ee2') in 0.009674 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/No_background_buttons/Flat_Icon_28_a.png
+  artifactKey: Guid(d9808f4c8600ea242a9369d8cfe189c5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/No_background_buttons/Flat_Icon_28_a.png using Guid(d9808f4c8600ea242a9369d8cfe189c5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '654ab6461226667d7b7857e6a7f3121e') in 0.008020 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000046 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/No_background_buttons/Flat_Icon_24_a.png
+  artifactKey: Guid(1c523e5bba2e6d740ac2c92dd6f15735) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/No_background_buttons/Flat_Icon_24_a.png using Guid(1c523e5bba2e6d740ac2c92dd6f15735) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '55186cf3a3702b3806d18db78cc92c2c') in 0.009177 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000033 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/No_background_buttons/Flat_Icon_43_a.png
+  artifactKey: Guid(283adf9d3ae80f0478571d2e4bda84d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/No_background_buttons/Flat_Icon_43_a.png using Guid(283adf9d3ae80f0478571d2e4bda84d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ceb29b8edd505ac6ffdd9671238c0b0a') in 0.008428 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000059 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/No_background_buttons/Flat_Icon_50_a.png
+  artifactKey: Guid(521ea2c4887675a4da5f1b443bd6312b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/No_background_buttons/Flat_Icon_50_a.png using Guid(521ea2c4887675a4da5f1b443bd6312b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3a2007eb7c648f5257dc40abd13f69d3') in 0.008277 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000041 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/No_background_buttons/Flat_Icon_19_a.png
+  artifactKey: Guid(0fcbf861227a23040939a4d387305b6d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/No_background_buttons/Flat_Icon_19_a.png using Guid(0fcbf861227a23040939a4d387305b6d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '40f50e070831d768e48a1e9998babb55') in 0.009117 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000100 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/No_background_buttons/Flat_Icon_15_a.png
+  artifactKey: Guid(48975e29ee95e6948a003196d170af2b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/No_background_buttons/Flat_Icon_15_a.png using Guid(48975e29ee95e6948a003196d170af2b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c3eaa20b830ec1af49206446553ee22d') in 0.009191 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000067 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/No_background_buttons/Flat_Icon_51_a.png
+  artifactKey: Guid(b9ebcb16e769fdd48a0c8e1e43553f33) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/No_background_buttons/Flat_Icon_51_a.png using Guid(b9ebcb16e769fdd48a0c8e1e43553f33) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd86008778793b635b972b93a5997f7d3') in 0.009397 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.695575 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/Standart_buttons
+  artifactKey: Guid(74295744687b5ea42afea94ae864d1b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/Standart_buttons using Guid(74295744687b5ea42afea94ae864d1b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bd3bcba2f1424b2d321af2a431440814') in 0.001763 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.062839 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/Standart_buttons/Flat_Icon_1_a.png
+  artifactKey: Guid(61e0afc7bdc044546931bfc311479f55) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/Standart_buttons/Flat_Icon_1_a.png using Guid(61e0afc7bdc044546931bfc311479f55) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a50004416603410f2b27f1c4567e232e') in 0.013232 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000053 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/Standart_buttons/Flat_Icon_30_a.png
+  artifactKey: Guid(c5ce941e4ecc48945b1d724d5bd93a8c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/Standart_buttons/Flat_Icon_30_a.png using Guid(c5ce941e4ecc48945b1d724d5bd93a8c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '63b130d03ce0c72dcad4c4a30c112160') in 0.011293 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000056 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/Standart_buttons/Flat_Icon_31_a.png
+  artifactKey: Guid(8aa8827c82dfe464f967675e43d02ee4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/Standart_buttons/Flat_Icon_31_a.png using Guid(8aa8827c82dfe464f967675e43d02ee4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ec82e4844bb74b7c50396456bc70fdcb') in 0.010632 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000044 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/Standart_buttons/Flat_Icon_49_a.png
+  artifactKey: Guid(e46761a127119ef4a9ccfc303b3f07b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/Standart_buttons/Flat_Icon_49_a.png using Guid(e46761a127119ef4a9ccfc303b3f07b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3c2b21c5993a3a6ada4b4367c3059b1b') in 0.009771 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/Standart_buttons/Flat_Icon_39_a.png
+  artifactKey: Guid(9cd584bdcdf48664987ccaa4741b0fcc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/Standart_buttons/Flat_Icon_39_a.png using Guid(9cd584bdcdf48664987ccaa4741b0fcc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9606743ecec51a46ee8b2a916ed81a15') in 0.009212 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000053 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/Standart_buttons/Flat_Icon_10_a.png
+  artifactKey: Guid(dd6361d6ba3e7d145a1e1c77e3703e97) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/Standart_buttons/Flat_Icon_10_a.png using Guid(dd6361d6ba3e7d145a1e1c77e3703e97) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8a7b13228246aa1bf6b08e62598ae3e5') in 0.009590 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000038 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/Standart_buttons/Flat_Icon_46_a.png
+  artifactKey: Guid(db235d7cb073b0d489febe761a5da747) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/Standart_buttons/Flat_Icon_46_a.png using Guid(db235d7cb073b0d489febe761a5da747) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8904b7cca9ece6fbd5aa54e41ffd28c3') in 0.009912 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/Standart_buttons/Flat_Icon_8_a.png
+  artifactKey: Guid(bb3207c37e30bd84fb1de71e26779c1e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/Standart_buttons/Flat_Icon_8_a.png using Guid(bb3207c37e30bd84fb1de71e26779c1e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9599fe63014694fa333b098f4586dac9') in 0.009439 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/Standart_buttons/Flat_Icon_13_a.png
+  artifactKey: Guid(c5f420f73d9c282419e65733eb856136) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/Standart_buttons/Flat_Icon_13_a.png using Guid(c5f420f73d9c282419e65733eb856136) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4242bb0ad19351580aff7b211c7f1210') in 0.010128 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000041 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/Standart_buttons/Flat_Icon_32_a.png
+  artifactKey: Guid(0c8992684f0c18346b637324736cb7c8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/Standart_buttons/Flat_Icon_32_a.png using Guid(0c8992684f0c18346b637324736cb7c8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e685c7648dcd37b62bf5b842f4e1ba5f') in 0.009714 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000048 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/Standart_buttons/Flat_Icon_41_a.png
+  artifactKey: Guid(a8079fa1563a0174e8f4b5fa6a4c7733) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/Standart_buttons/Flat_Icon_41_a.png using Guid(a8079fa1563a0174e8f4b5fa6a4c7733) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '53770811b0d99467b0e8053b070c2f06') in 0.009403 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000045 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/Standart_buttons/Flat_Icon_44_a.png
+  artifactKey: Guid(6437ea95c8d303841bbec63e670610b4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/Standart_buttons/Flat_Icon_44_a.png using Guid(6437ea95c8d303841bbec63e670610b4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dfcf3719cd85fc0de87b1018024deb09') in 0.009588 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/Standart_buttons/Flat_Icon_52_a.png
+  artifactKey: Guid(1ed5f6d707c8f284ebaaf7d9f895ba53) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/Standart_buttons/Flat_Icon_52_a.png using Guid(1ed5f6d707c8f284ebaaf7d9f895ba53) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '94aabd5c6105d89e242916a2ca4f39b6') in 0.009426 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/Standart_buttons/Flat_Icon_12_a.png
+  artifactKey: Guid(cdd9c6e437c51134bbaf00c6d2cfddd8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/Standart_buttons/Flat_Icon_12_a.png using Guid(cdd9c6e437c51134bbaf00c6d2cfddd8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '557a9c93ceaa317162e7e50ebe133384') in 0.009332 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000044 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/Standart_buttons/Flat_Icon_6_a.png
+  artifactKey: Guid(c70f19f584562294e96b28d98b9564e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/Standart_buttons/Flat_Icon_6_a.png using Guid(c70f19f584562294e96b28d98b9564e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ea3ad6b70162da1b1c0c0ce3de8839d6') in 0.009841 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000050 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/Standart_buttons/Flat_Icon_43_a.png
+  artifactKey: Guid(1113efbd6a7a4b44097e0337fa6472b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/Standart_buttons/Flat_Icon_43_a.png using Guid(1113efbd6a7a4b44097e0337fa6472b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '719e393d5112c3a7c8d8528a6e37ebc3') in 0.009722 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000047 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/Standart_buttons/Flat_Icon_45_a.png
+  artifactKey: Guid(2838905209b57c04884a30ae8cb44bab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/Standart_buttons/Flat_Icon_45_a.png using Guid(2838905209b57c04884a30ae8cb44bab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '07db70317de44525069c6f78f18d0308') in 0.009443 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000047 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/Standart_buttons/Flat_Icon_20_a.png
+  artifactKey: Guid(87e274ab013ddb24d87aee7dacc54736) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/Standart_buttons/Flat_Icon_20_a.png using Guid(87e274ab013ddb24d87aee7dacc54736) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b1204b5c66f4b7d609a235e4d873d8c2') in 0.009575 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/Standart_buttons/Flat_Icon_36_a.png
+  artifactKey: Guid(e88b912f7548d234789ce06c2d435e74) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/Standart_buttons/Flat_Icon_36_a.png using Guid(e88b912f7548d234789ce06c2d435e74) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5dbe235abe1de0a73a3d89585534753d') in 0.009509 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000062 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/Standart_buttons/Flat_Icon_50_a.png
+  artifactKey: Guid(21c6ea7e289df104f9300116d73ecd45) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/Standart_buttons/Flat_Icon_50_a.png using Guid(21c6ea7e289df104f9300116d73ecd45) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '802c57e691a503660ee7ca3f1212b4f8') in 0.009135 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000101 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/Standart_buttons/Flat_Icon_5_a.png
+  artifactKey: Guid(31594e701e8785f4483397dd17011dd3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/Standart_buttons/Flat_Icon_5_a.png using Guid(31594e701e8785f4483397dd17011dd3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0c71895dda0839dfe0cd4a00dc7c5cfb') in 0.008784 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000065 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/Standart_buttons/Flat_Icon_3_a.png
+  artifactKey: Guid(bc849e520814b3447a4ec168e95f37e7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/Standart_buttons/Flat_Icon_3_a.png using Guid(bc849e520814b3447a4ec168e95f37e7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '48ff2a9d18246e9c12169568cde63a51') in 0.008810 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000099 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/Standart_buttons/Flat_Icon_21_a.png
+  artifactKey: Guid(06a94ea2cc665824993a36938464c2f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/Standart_buttons/Flat_Icon_21_a.png using Guid(06a94ea2cc665824993a36938464c2f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5bb7210cd0881a4cf56c154dadee25c9') in 0.009269 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000047 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/Standart_buttons/Flat_Icon_7_a.png
+  artifactKey: Guid(215a5d6f748c2dd49ab1aeb15bc3e2c5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/Standart_buttons/Flat_Icon_7_a.png using Guid(215a5d6f748c2dd49ab1aeb15bc3e2c5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd03b17ad5a85d57c5fe3911faa419891') in 0.009447 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000061 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/Standart_buttons/Flat_Icon_34_a.png
+  artifactKey: Guid(3edb7461a44ebed4dac907d677641a8e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/Standart_buttons/Flat_Icon_34_a.png using Guid(3edb7461a44ebed4dac907d677641a8e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b8b528c174e87575f924e7a59649347b') in 0.009954 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000047 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/Standart_buttons/Flat_Icon_48_a.png
+  artifactKey: Guid(a17df6d04461eb7469236744dc01a836) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/Standart_buttons/Flat_Icon_48_a.png using Guid(a17df6d04461eb7469236744dc01a836) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '806e87316b473c0e73b6ca7d129c7037') in 0.010095 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.710020 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/White_buttons
+  artifactKey: Guid(f71e61e8e31030c42a0fd394e2d6a05f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/White_buttons using Guid(f71e61e8e31030c42a0fd394e2d6a05f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bf35274b69d36cb326e39c487d6553cb') in 0.001684 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.090280 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/White_buttons/Flat_Icon_1.png
+  artifactKey: Guid(e6fe9f11941e0d14c813148f770ec27a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/White_buttons/Flat_Icon_1.png using Guid(e6fe9f11941e0d14c813148f770ec27a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9b4e9485fe8cc9f1b26b0873024c0244') in 0.012610 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000045 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/White_buttons/Flat_Icon_5.png
+  artifactKey: Guid(9e2b64425200c574fa4f6efce6f41b4a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/White_buttons/Flat_Icon_5.png using Guid(9e2b64425200c574fa4f6efce6f41b4a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9932bbccb382c2d5f5226da6f461d8c1') in 0.010457 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000040 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/White_buttons/Flat_Icon_31.png
+  artifactKey: Guid(6591b3aa5c601d644a4789237426adbe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/White_buttons/Flat_Icon_31.png using Guid(6591b3aa5c601d644a4789237426adbe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '84812f4b213e27ece7a9dfc616e23292') in 0.009392 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/White_buttons/Flat_Icon_26.png
+  artifactKey: Guid(1263010fb493ce7428f2299f3ddbbd64) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/White_buttons/Flat_Icon_26.png using Guid(1263010fb493ce7428f2299f3ddbbd64) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8a1d478b70e3a3e687622801695bcec6') in 0.008577 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000047 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/White_buttons/Flat_Icon_40.png
+  artifactKey: Guid(61678f2fdf65e1e4894d52eaff762f4c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/White_buttons/Flat_Icon_40.png using Guid(61678f2fdf65e1e4894d52eaff762f4c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c677448e909af1a69bd6fa1924545203') in 0.008406 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000047 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/White_buttons/Flat_Icon_14.png
+  artifactKey: Guid(44662c7ca75b951448c696eb0c1b44b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/White_buttons/Flat_Icon_14.png using Guid(44662c7ca75b951448c696eb0c1b44b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c1549815c071f4ba9f6d8ffa7c406d14') in 0.009241 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000041 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/White_buttons/Flat_Icon_32.png
+  artifactKey: Guid(7db62ce420aa75d429d760411817a7e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/White_buttons/Flat_Icon_32.png using Guid(7db62ce420aa75d429d760411817a7e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fe10aa8af9ef5608eb63844f476ff59d') in 0.008181 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000046 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/White_buttons/Flat_Icon_50.png
+  artifactKey: Guid(975f404b1185c714ba366fd21da6d640) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/White_buttons/Flat_Icon_50.png using Guid(975f404b1185c714ba366fd21da6d640) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '098f7a93e6303a28e5972b09d696a882') in 0.008464 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/White_buttons/Flat_Icon_36.png
+  artifactKey: Guid(e18333d21a480704abe5f6bac3b362d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/White_buttons/Flat_Icon_36.png using Guid(e18333d21a480704abe5f6bac3b362d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a83a015683239656079948b75dca5ab0') in 0.007921 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000049 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/White_buttons/Flat_Icon_29.png
+  artifactKey: Guid(95b40bdbaa7e92e45a54a65e52559e57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/White_buttons/Flat_Icon_29.png using Guid(95b40bdbaa7e92e45a54a65e52559e57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c533205b2704b543a33c06c3079c077a') in 0.008568 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000063 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/White_buttons/Flat_Icon_11.png
+  artifactKey: Guid(e141ed69ce146f24c8293b254edae654) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/White_buttons/Flat_Icon_11.png using Guid(e141ed69ce146f24c8293b254edae654) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ca7188e8a2425289d774bfdac2980e3a') in 0.009281 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000044 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/White_buttons/Flat_Icon_51.png
+  artifactKey: Guid(5a68a9bd8d866a14e990a2433cc49d57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/White_buttons/Flat_Icon_51.png using Guid(5a68a9bd8d866a14e990a2433cc49d57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '82133d45a70d38b7d76bbc9e68c1853f') in 0.007837 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/White_buttons/Flat_Icon_46.png
+  artifactKey: Guid(58111bfb0856d1949b0d8fc6bb86fa23) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/White_buttons/Flat_Icon_46.png using Guid(58111bfb0856d1949b0d8fc6bb86fa23) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1c90d6bf86980dbb466dc014854f3f88') in 0.008569 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000048 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/White_buttons/Flat_Icon_16.png
+  artifactKey: Guid(d78b18c3aba0641459d2f8fe8d26596d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/White_buttons/Flat_Icon_16.png using Guid(d78b18c3aba0641459d2f8fe8d26596d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '07b73cac325de32e0297743769ef5595') in 0.008716 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000038 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/White_buttons/Flat_Icon_48.png
+  artifactKey: Guid(81f71a71e57034040bc24dffe5c579c0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/White_buttons/Flat_Icon_48.png using Guid(81f71a71e57034040bc24dffe5c579c0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2512f0a84d7a7615fd35e0cb19b9b9b7') in 0.008402 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000063 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/White_buttons/Flat_Icon_6.png
+  artifactKey: Guid(0dbad5f4b629e2c41a4830203dee18b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/White_buttons/Flat_Icon_6.png using Guid(0dbad5f4b629e2c41a4830203dee18b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bbf04fe5c135af9e1cc940bafdb5ca3b') in 0.008001 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000055 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/White_buttons/Flat_Icon_27.png
+  artifactKey: Guid(8a2b1605486503648ba510b5b91b7aa2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/White_buttons/Flat_Icon_27.png using Guid(8a2b1605486503648ba510b5b91b7aa2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c11b5d8f4abf57c3ce55528b9049b965') in 0.008423 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000055 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/White_buttons/Flat_Icon_8.png
+  artifactKey: Guid(f494e8eeb262524449fd98ef90b6dd95) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/White_buttons/Flat_Icon_8.png using Guid(f494e8eeb262524449fd98ef90b6dd95) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '50d24c64345540b8880a3ead358d1429') in 0.007873 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/White_buttons/Flat_Icon_35.png
+  artifactKey: Guid(0edc739646febc44ebfcc812a6f435f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/White_buttons/Flat_Icon_35.png using Guid(0edc739646febc44ebfcc812a6f435f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '39a7b5a03af4f1384968c350bb1f2e4d') in 0.008479 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000040 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/White_buttons/Flat_Icon_18.png
+  artifactKey: Guid(92abc1e5b36c43b4084959d589470a5b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/White_buttons/Flat_Icon_18.png using Guid(92abc1e5b36c43b4084959d589470a5b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '01a8ba19341b20ed579362fe6cbf62b5') in 0.008245 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000042 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/White_buttons/Flat_Icon_7.png
+  artifactKey: Guid(6fc5c19d63c144b43a9302169ec9399c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/White_buttons/Flat_Icon_7.png using Guid(6fc5c19d63c144b43a9302169ec9399c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '731a8b8556c714e1e9297e9ce5ccd2e7') in 0.007514 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000033 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/White_buttons/Flat_Icon_20.png
+  artifactKey: Guid(d29133216dd9826489ca80d04656f85c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/White_buttons/Flat_Icon_20.png using Guid(d29133216dd9826489ca80d04656f85c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f530f31dd4b469abef597a3e2ccf6c2d') in 0.008572 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000046 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/White_buttons/Flat_Icon_22.png
+  artifactKey: Guid(26f2d4bc3ff7f2f4cbf3408fe5873e5b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/White_buttons/Flat_Icon_22.png using Guid(26f2d4bc3ff7f2f4cbf3408fe5873e5b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4f5712e039650eda24e5035bdd562139') in 0.008435 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000048 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/White_buttons/Flat_Icon_42.png
+  artifactKey: Guid(6bf3a388b3368aa45841cae1c4b46f80) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/White_buttons/Flat_Icon_42.png using Guid(6bf3a388b3368aa45841cae1c4b46f80) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '14ae9df7c920c56781471bb089a8561e') in 0.008466 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000099 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/White_buttons/Flat_Icon_21.png
+  artifactKey: Guid(1fe2d619936661242a242bd6acf406ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/White_buttons/Flat_Icon_21.png using Guid(1fe2d619936661242a242bd6acf406ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cd3a6e0a0c9cf1f13e439ee24630573c') in 0.008941 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Viking_RPG_UI/Buttons/White_buttons/Flat_Icon_30.png
+  artifactKey: Guid(da0bc11073d8ab64f9f7d70c8928c03e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Buttons/White_buttons/Flat_Icon_30.png using Guid(da0bc11073d8ab64f9f7d70c8928c03e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '573ab744edbb03aa3a56093850d39e11') in 0.007795 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001449 seconds.
+Begin MonoManager ReloadAssembly
+Thread 0x16b82b000 may have been prematurely finalized
+Symbol file LoadedFromMemory doesn't match image /Users/alvaro/Documents/geodb/com.geodb.9worlds.mini.game.unity/Library/PackageCache/com.unity.visualscripting@1.7.6/Editor/VisualScripting.Core/Dependencies/YamlDotNet/Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file LoadedFromMemory doesn't match image /Users/alvaro/Documents/geodb/com.geodb.9worlds.mini.game.unity/Library/PackageCache/com.unity.visualscripting@1.7.6/Editor/VisualScripting.Core/Dependencies/DotNetZip/Unity.VisualScripting.IonicZip.dll
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.52 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.542 seconds
+Domain Reload Profiling:
+	ReloadAssembly (543ms)
+		BeginReloadAssembly (67ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (23ms)
+		EndReloadAssembly (423ms)
+			LoadAssemblies (30ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (136ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (29ms)
+			SetupLoadedEditorAssemblies (194ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (5ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (43ms)
+				ProcessInitializeOnLoadAttributes (126ms)
+				ProcessInitializeOnLoadMethodAttributes (19ms)
+				AfterProcessingInitializeOnLoad (1ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (4ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.88 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3945 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 25 unused Assets / (49.8 KB). Loaded Objects now: 4478.
+Memory consumption went from 269.4 MB to 269.4 MB.
+Total: 2.119125 ms (FindLiveObjects: 0.108375 ms CreateObjectMapping: 0.044875 ms MarkObjects: 1.919166 ms  DeleteObjects: 0.045959 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 126.921655 seconds.
+  path: Assets/Viking_RPG_UI/PSD_bars
+  artifactKey: Guid(9517ca9924aa6444b9cd244b9d64580b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/PSD_bars using Guid(9517ca9924aa6444b9cd244b9d64580b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '765e6745335b1e2ce99ffe733e7b25f3') in 0.007036 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.180760 seconds.
+  path: Assets/Viking_RPG_UI/PSD_bars/Bag_bar.psd
+  artifactKey: Guid(a12efa4f2628e1949b1e3f70cda02dbd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/PSD_bars/Bag_bar.psd using Guid(a12efa4f2628e1949b1e3f70cda02dbd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7179c019315d9fe2a3343cc50c75e390') in 0.666924 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000043 seconds.
+  path: Assets/Viking_RPG_UI/PSD_bars/Options_bar.psd
+  artifactKey: Guid(7caa8df46816a344daa40256526d5fa7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/PSD_bars/Options_bar.psd using Guid(7caa8df46816a344daa40256526d5fa7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5f7b0c375924d07b006647a2c1492fa7') in 0.030000 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000048 seconds.
+  path: Assets/Viking_RPG_UI/PSD_bars/Map_bar.psd
+  artifactKey: Guid(c847a609e80274145b8ccb0a5f5e3e8a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/PSD_bars/Map_bar.psd using Guid(c847a609e80274145b8ccb0a5f5e3e8a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1f7e43ead78897095dbe22cdf3bce478') in 0.011726 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000108 seconds.
+  path: Assets/Viking_RPG_UI/PSD_bars/Shop_bar.psd
+  artifactKey: Guid(3a3c633b8c342fb4f909d68432d9ea42) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/PSD_bars/Shop_bar.psd using Guid(3a3c633b8c342fb4f909d68432d9ea42) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '13568b6b310039dbb38e0c4825a8c5ed') in 0.026493 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000087 seconds.
+  path: Assets/Viking_RPG_UI/PSD_bars/Equipment_bar.psd
+  artifactKey: Guid(e31e5cccc5d4b554c83020ed328ff273) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/PSD_bars/Equipment_bar.psd using Guid(e31e5cccc5d4b554c83020ed328ff273) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0358051a74332f43a71ef22084408035') in 0.033729 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000060 seconds.
+  path: Assets/Viking_RPG_UI/PSD_bars/Hero_bar.psd
+  artifactKey: Guid(c2667865c3e3f514588cc39d308c0b02) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/PSD_bars/Hero_bar.psd using Guid(c2667865c3e3f514588cc39d308c0b02) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6d7fc21d832d016c769ac4a821f19441') in 0.012701 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000060 seconds.
+  path: Assets/Viking_RPG_UI/PSD_bars/Skill_bar.psd
+  artifactKey: Guid(3f1e427b82640974684b2e28c145b17c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/PSD_bars/Skill_bar.psd using Guid(3f1e427b82640974684b2e28c145b17c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'af1806de83fcc50ac9df2843fb945e8e') in 0.024427 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 15.224440 seconds.
+  path: Assets/Viking_RPG_UI/Skill_icons
+  artifactKey: Guid(dfffc90b1c20d2345bb37506066b5fbb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Skill_icons using Guid(dfffc90b1c20d2345bb37506066b5fbb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '282428b4baa0853401d39783fdb78a12') in 0.001586 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.318597 seconds.
+  path: Assets/Viking_RPG_UI/Skill_icons/No_background_skills
+  artifactKey: Guid(d5541e7da3e3b1f4180a40a8ce819411) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Skill_icons/No_background_skills using Guid(d5541e7da3e3b1f4180a40a8ce819411) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '96870e27789a66cd75023c86b5bc1c0f') in 0.001688 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.074523 seconds.
+  path: Assets/Viking_RPG_UI/Skill_icons/No_background_skills/Skill_01_nobg.png
+  artifactKey: Guid(c45e88ac47ac7ce438fda5817650a2b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Skill_icons/No_background_skills/Skill_01_nobg.png using Guid(c45e88ac47ac7ce438fda5817650a2b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3fb56290dddfc7d63ec825c6b121902c') in 0.015299 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/Viking_RPG_UI/Skill_icons/No_background_skills/Skill_07_nobg.png
+  artifactKey: Guid(7a58a614b2ab009418522670a42d3482) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Skill_icons/No_background_skills/Skill_07_nobg.png using Guid(7a58a614b2ab009418522670a42d3482) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f7b384e3a5aca6b89442237b5b0e6798') in 0.011469 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000047 seconds.
+  path: Assets/Viking_RPG_UI/Skill_icons/No_background_skills/Skill_06_nobg.png
+  artifactKey: Guid(481cc954fce2f0049b93ead37cba6b23) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Skill_icons/No_background_skills/Skill_06_nobg.png using Guid(481cc954fce2f0049b93ead37cba6b23) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cc74302a1b4824142d7f497daf0318d4') in 0.010702 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000053 seconds.
+  path: Assets/Viking_RPG_UI/Skill_icons/No_background_skills/Skill_03_nobg.png
+  artifactKey: Guid(2df1cb84f93bf4340b84e120d8ee35de) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Skill_icons/No_background_skills/Skill_03_nobg.png using Guid(2df1cb84f93bf4340b84e120d8ee35de) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '45decb603c0e632087cce0ad5820524f') in 0.011313 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.012090 seconds.
+  path: Assets/Viking_RPG_UI/Skill_icons/Standart_skills
+  artifactKey: Guid(b222f1030315fb547b025a38c1512f85) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Skill_icons/Standart_skills using Guid(b222f1030315fb547b025a38c1512f85) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cc3e45d67ac73fdd262681f0fbb013f3') in 0.001667 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.066418 seconds.
+  path: Assets/Viking_RPG_UI/Skill_icons/Standart_skills/Skill_01.png
+  artifactKey: Guid(ba8b5824e7d77694893494603ecfe032) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Skill_icons/Standart_skills/Skill_01.png using Guid(ba8b5824e7d77694893494603ecfe032) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '54862c4f7e3a17e2c6632bfa3778dfd1') in 0.015139 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000069 seconds.
+  path: Assets/Viking_RPG_UI/Skill_icons/Standart_skills/Skill_05.png
+  artifactKey: Guid(f9094fcc6c2bd1141bf83c91ea981a61) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Skill_icons/Standart_skills/Skill_05.png using Guid(f9094fcc6c2bd1141bf83c91ea981a61) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '249f2838071859001ee7111e3113195b') in 0.011183 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000090 seconds.
+  path: Assets/Viking_RPG_UI/Skill_icons/Standart_skills/Skill_03.png
+  artifactKey: Guid(e25cc338557751847981399b285770c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Skill_icons/Standart_skills/Skill_03.png using Guid(e25cc338557751847981399b285770c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '593a882cce58c9898a7663b8b0d6ad85') in 0.010445 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000041 seconds.
+  path: Assets/Viking_RPG_UI/Skill_icons/Standart_skills/Skill_04.png
+  artifactKey: Guid(0c006316cef529146a3e4f9049ebc440) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Viking_RPG_UI/Skill_icons/Standart_skills/Skill_04.png using Guid(0c006316cef529146a3e4f9049ebc440) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c2c33191d1f8529e58d2847cb3b6aa69') in 0.010729 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001476 seconds.
+Begin MonoManager ReloadAssembly
+Thread 0x16b10f000 may have been prematurely finalized
+Symbol file LoadedFromMemory doesn't match image /Users/alvaro/Documents/geodb/com.geodb.9worlds.mini.game.unity/Library/PackageCache/com.unity.visualscripting@1.7.6/Editor/VisualScripting.Core/Dependencies/YamlDotNet/Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file LoadedFromMemory doesn't match image /Users/alvaro/Documents/geodb/com.geodb.9worlds.mini.game.unity/Library/PackageCache/com.unity.visualscripting@1.7.6/Editor/VisualScripting.Core/Dependencies/DotNetZip/Unity.VisualScripting.IonicZip.dll
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.39 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.545 seconds
+Domain Reload Profiling:
+	ReloadAssembly (546ms)
+		BeginReloadAssembly (69ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (26ms)
+		EndReloadAssembly (425ms)
+			LoadAssemblies (29ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (135ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (32ms)
+			SetupLoadedEditorAssemblies (191ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (5ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (0ms)
+				BeforeProcessingInitializeOnLoad (44ms)
+				ProcessInitializeOnLoadAttributes (123ms)
+				ProcessInitializeOnLoadMethodAttributes (17ms)
+				AfterProcessingInitializeOnLoad (1ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (3ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.88 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3945 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 25 unused Assets / (49.7 KB). Loaded Objects now: 4498.
+Memory consumption went from 274.2 MB to 274.2 MB.
+Total: 2.312792 ms (FindLiveObjects: 0.107916 ms CreateObjectMapping: 0.046584 ms MarkObjects: 2.099333 ms  DeleteObjects: 0.058250 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
