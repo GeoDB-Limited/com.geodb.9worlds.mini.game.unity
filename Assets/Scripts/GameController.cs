@@ -25,7 +25,10 @@ public class GameController : MonoBehaviour
     private const string REORDER_BUTTON_NAME = "ReorderButton";
     private const string OUTLINE_NAME = "Outline";
     private const string FRAME_NAME = "Frame";
+    private const string TX_INFO_TEXT_NAME = "TxInfoText";
     private const string WIN_INDICATOR_NAME = "WinIndicator";
+    private const string WATING_FOR_TX_CONFIRM_TEXT = "Wating for tx confirmation...";
+    private const string SUCCESS_TEXT = "Success!";
 
     private const int LAST_NFT_ID = 999;
 
@@ -34,11 +37,14 @@ public class GameController : MonoBehaviour
     public GameObject reorderButton;
     public GameObject cancelReorderButton;
     public GameObject swapButton;
+    public GameObject txInfoWindow;
     public GameObject result;
     public GameObject aiHand;
     public GameObject playerHand;
     public List<GameObject> aiCards;
     public List<GameObject> playerCards;
+    public List<GameObject> aiWinIndicators;
+    public List<GameObject> playerWinIndicators;
     public int aiTotalPower = 0;
     public int playerTotalPower = 0;
 
@@ -67,11 +73,15 @@ public class GameController : MonoBehaviour
         foreach( Transform item in aiHand.GetComponentsInChildren<Transform>()) {
             if (item.name != AI_HAND_NAME && !item.name.Contains(FRAME_NAME) && !item.name.Contains(WIN_INDICATOR_NAME)) {
                aiCards.Add(item.gameObject);
+            } else if (item.name == WIN_INDICATOR_NAME) {
+                aiWinIndicators.Add(item.gameObject);
             }
         }
         foreach( Transform item in playerHand.GetComponentsInChildren<Transform>()) {
             if (item.name != PLAYER_HAND_NAME && !item.name.Contains(OUTLINE_NAME) && !item.name.Contains(FRAME_NAME) && !item.name.Contains(WIN_INDICATOR_NAME)) {
                 playerCards.Add(item.gameObject);
+            } else if (item.name == WIN_INDICATOR_NAME) {
+                playerWinIndicators.Add(item.gameObject);
             }
         }
         for (int i = 0; i < aiNfts.Count; i++) {
@@ -157,6 +167,11 @@ public class GameController : MonoBehaviour
         cancelReorderButton.SetActive(false);
     }
 
+    public void ResolveMatch() {
+        txInfoWindow.SetActive(true);
+        StartCoroutine(ResolveMatchTransaction());
+    }
+
     private void GenerateRandomMatch() {
         selectedNfts = new List<int>();
         HashSet<int> alreadyUsedIds = new HashSet<int>();
@@ -171,6 +186,18 @@ public class GameController : MonoBehaviour
         }
         playerNfts = selectedNfts.GetRange(0,cardAmount);
         aiNfts = selectedNfts.GetRange(cardAmount,cardAmount);
+    }
+    
+    private IEnumerator ResolveMatchTransaction() {
+        TextMeshProUGUI txInfo = GameObject.Find(TX_INFO_TEXT_NAME).GetComponent<TextMeshProUGUI>();
+        yield return new WaitForSeconds(3f);
+        txInfo.text = WATING_FOR_TX_CONFIRM_TEXT;
+        yield return new WaitForSeconds(3f);
+        txInfo.text = SUCCESS_TEXT;
+        yield return new WaitForSeconds(1f);
+        Battle();
+        txInfoWindow.SetActive(false);
+        //TODO: ResultWindow.SetActive(true);
     }
 
     private IEnumerator GetRequest(int nftId, int handIndex, bool isAI)
