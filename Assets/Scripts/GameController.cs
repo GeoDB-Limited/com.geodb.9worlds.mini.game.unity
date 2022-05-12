@@ -27,6 +27,8 @@ public class GameController : MonoBehaviour
     private const string FRAME_NAME = "Frame";
     private const string TX_INFO_TEXT_NAME = "TxInfoText";
     private const string WIN_INDICATOR_NAME = "WinIndicator";
+    private const string WIN_TEXT_NAME = "WinnerText";
+    private const string WIN_ICON_TAG = "WinIcon";
     private const string WATING_FOR_TX_CONFIRM_TEXT = "Wating for tx confirmation...";
     private const string SUCCESS_TEXT = "Success!";
 
@@ -34,6 +36,8 @@ public class GameController : MonoBehaviour
 
     public int cardAmount;
     public List<GameObject> boards;
+    public GameObject powerWinIndicator;
+
     public GameObject reorderButton;
     public GameObject cancelReorderButton;
     public GameObject swapButton;
@@ -43,7 +47,6 @@ public class GameController : MonoBehaviour
     public GameObject playerHand;
     public List<GameObject> aiCards;
     public List<GameObject> playerCards;
-    public List<GameObject> aiWinIndicators;
     public List<GameObject> playerWinIndicators;
     public int aiTotalPower = 0;
     public int playerTotalPower = 0;
@@ -73,8 +76,6 @@ public class GameController : MonoBehaviour
         foreach( Transform item in aiHand.GetComponentsInChildren<Transform>()) {
             if (item.name != AI_HAND_NAME && !item.name.Contains(FRAME_NAME) && !item.name.Contains(WIN_INDICATOR_NAME)) {
                aiCards.Add(item.gameObject);
-            } else if (item.name == WIN_INDICATOR_NAME) {
-                aiWinIndicators.Add(item.gameObject);
             }
         }
         foreach( Transform item in playerHand.GetComponentsInChildren<Transform>()) {
@@ -125,12 +126,21 @@ public class GameController : MonoBehaviour
                 singleMatchesState[i] = SingleMatchState.Tie;
             }
         }
+        result.SetActive(true);
+        TextMeshProUGUI winText = GameObject.Find(WIN_TEXT_NAME).GetComponent<TextMeshProUGUI>();
+        GameObject[] winIcons= GameObject.FindGameObjectsWithTag(WIN_ICON_TAG);
         if (aiPoints > playerPoints) {
-            result.GetComponent<TextMeshProUGUI>().text = "Result:\n" + playerPoints + " - " + aiPoints + "\n You Lose!";
+            winText.text = "Defeat!";
+            winIcons[0].GetComponent<WinIconController>().iconState = IconState.Win;
+            winIcons[1].GetComponent<WinIconController>().iconState = IconState.Win;
         } else if (aiPoints < playerPoints) {
-            result.GetComponent<TextMeshProUGUI>().text = "Result:\n" + playerPoints + " - " + aiPoints + "\n You Win!";
+            winText.text = "Victory!";
+            winIcons[0].GetComponent<WinIconController>().iconState = IconState.Lose;
+            winIcons[1].GetComponent<WinIconController>().iconState = IconState.Lose;
         } else {
-            result.GetComponent<TextMeshProUGUI>().text = "Result:\n" + playerPoints + " - " + aiPoints + "\n Tie!";
+            winText.text = "Tie!";
+            winIcons[0].GetComponent<WinIconController>().iconState = IconState.Tie;
+            winIcons[1].GetComponent<WinIconController>().iconState = IconState.Tie;
         }
         Debug.Log(aiPoints.ToString() + ", " + playerPoints.ToString());
     }
@@ -196,6 +206,15 @@ public class GameController : MonoBehaviour
         txInfo.text = SUCCESS_TEXT;
         yield return new WaitForSeconds(1f);
         Battle();
+        for (int i = 0; i < singleMatchesState.Length; i++) {
+            if (singleMatchesState[i] == SingleMatchState.Tie) {
+                playerWinIndicators[i].GetComponent<WinIndicatorController>().iconState = IconState.Tie;
+            } else if (singleMatchesState[i] == SingleMatchState.PlayerWinner) {
+                playerWinIndicators[i].GetComponent<WinIndicatorController>().iconState = IconState.Win;
+            } else {
+                playerWinIndicators[i].GetComponent<WinIndicatorController>().iconState = IconState.Lose;
+            }
+        }
         txInfoWindow.SetActive(false);
         //TODO: ResultWindow.SetActive(true);
     }
@@ -234,6 +253,13 @@ public class GameController : MonoBehaviour
                     GameObject.Find(PLAYER_TOTAL_POWER_NAME).GetComponent<TextMeshProUGUI>().text = "Power: " + playerTotalPower;
                 }
                 reorderButton.SetActive(playerTotalPower > aiTotalPower && cardAmount > 1);
+                if (playerTotalPower > aiTotalPower) {
+                    powerWinIndicator.GetComponent<WinIndicatorController>().iconState = IconState.Win;
+                } else if (playerTotalPower < aiTotalPower) {
+                    powerWinIndicator.GetComponent<WinIndicatorController>().iconState = IconState.Lose;
+                } else {
+                    powerWinIndicator.GetComponent<WinIndicatorController>().iconState = IconState.Tie;
+                }
             }
 
             /* switch (webRequest.result)
