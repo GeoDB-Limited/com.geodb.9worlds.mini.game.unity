@@ -9,7 +9,7 @@ public class NFTController : MonoBehaviour
     
     public bool isSelected = false;
     public float lerpSpeed = 5f;
-    public Vector3 objectivePosition;
+    public Vector3 objectivePosition = Vector3.zero;
     public Vector3 startingPosition = Vector3.zero;
     public float lerp = 1;
     private SpriteRenderer spriteRenderer;
@@ -34,6 +34,9 @@ public class NFTController : MonoBehaviour
             Vector3 positon = Vector3.Lerp(startingPosition, objectivePosition, lerp);
             transform.position = positon;
             lerp += Mathf.Min(lerpSpeed * Time.deltaTime, 1f);
+        } else if (lerp >= 1 && objectivePosition != Vector3.zero) {
+            Vector3 positon = Vector3.Lerp(startingPosition, objectivePosition, 1);
+            transform.position = positon;
         }
     }
 

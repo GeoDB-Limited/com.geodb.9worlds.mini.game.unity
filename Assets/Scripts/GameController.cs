@@ -31,6 +31,7 @@ public class GameController : MonoBehaviour
     private const string TX_INFO_TEXT_NAME = "TxInfoText";
     private const string WIN_INDICATOR_NAME = "WinIndicator";
     private const string WIN_TEXT_NAME = "WinnerText";
+    private const string RESULT_INFO_TEXT_NAME = "ResultInfoText";
     private const string WIN_ICON_TAG = "WinIcon";
     private const string WATING_FOR_TX_CONFIRM_TEXT = "Wating for tx confirmation...";
     private const string SUCCESS_TEXT = "Success!";
@@ -130,6 +131,8 @@ public class GameController : MonoBehaviour
             }
         }
         result.SetActive(true);
+        TextMeshProUGUI resultInfoText = GameObject.Find(RESULT_INFO_TEXT_NAME).GetComponent<TextMeshProUGUI>();
+        resultInfoText.text = playerPoints + " - " + aiPoints;
         TextMeshProUGUI winText = GameObject.Find(WIN_TEXT_NAME).GetComponent<TextMeshProUGUI>();
         GameObject[] winIcons= GameObject.FindGameObjectsWithTag(WIN_ICON_TAG);
         if (aiPoints > playerPoints) {
@@ -145,7 +148,6 @@ public class GameController : MonoBehaviour
             winIcons[0].GetComponent<WinIconController>().iconState = IconState.Tie;
             winIcons[1].GetComponent<WinIconController>().iconState = IconState.Tie;
         }
-        Debug.Log(aiPoints.ToString() + ", " + playerPoints.ToString());
     }
 
     public void ToggleReorderSelection() {

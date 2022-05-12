@@ -809,7 +809,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -120, y: 93.700005}
+  m_AnchoredPosition: {x: -120, y: 63.999996}
   m_SizeDelta: {x: 190.4, y: 47.78}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &227117331
@@ -918,12 +918,12 @@ GameObject:
   - component: {fileID: 279374335}
   - component: {fileID: 279374334}
   m_Layer: 5
-  m_Name: TxInfoText
+  m_Name: ResultInfoText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &279374333
 RectTransform:
   m_ObjectHideFlags: 0
@@ -941,7 +941,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 97}
+  m_AnchoredPosition: {x: 0, y: 112}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &279374334
@@ -964,7 +964,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You win!
+  m_text: 3 - 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 48aeec08271ad4d5e848088bc52505a4, type: 2}
   m_sharedMaterial: {fileID: 1890086503382896995, guid: 48aeec08271ad4d5e848088bc52505a4, type: 2}
@@ -1797,7 +1797,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -414.8}
+  m_AnchoredPosition: {x: 0, y: -391.23}
   m_SizeDelta: {x: 668.2, y: 330.79}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &834420479
@@ -2324,7 +2324,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 120, y: 93.7}
+  m_AnchoredPosition: {x: 120, y: 64}
   m_SizeDelta: {x: 190.4, y: 47.78}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &994654323
