@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Networking;
 using Newtonsoft.Json;
 using TMPro;
+using System.Runtime.InteropServices;
 
 public enum SingleMatchState
 {
@@ -15,6 +16,8 @@ public enum SingleMatchState
 
 public class GameController : MonoBehaviour
 {
+    [DllImport("__Internal")]
+     private static extern void OpenURLInExternalWindow(string url);
 
     private const string BASE_URI = "https://odin9worldsmidgard.mypinata.cloud/ipfs/QmTgJNNnaF2tcaXNufmkjKHEUquJA45sW9V9bBw2MdgEDn/";
     private const string BASE_EXTENSION = ".json";
@@ -175,6 +178,10 @@ public class GameController : MonoBehaviour
         swapButton.SetActive(false);
         reorderButton.SetActive(false);
         cancelReorderButton.SetActive(false);
+    }
+
+    public void OpenBrowserTx() {
+        OpenURLInExternalWindow("https://polygonscan.com/tx/0x1e879b606a0554a254d5bb03bd2460da4810bb7e330cd3f90b59a86bbff8d9f2");
     }
 
     public void ResolveMatch() {
