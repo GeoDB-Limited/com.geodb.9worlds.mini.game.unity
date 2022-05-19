@@ -64,19 +64,37 @@ public class GameController : MonoBehaviour
 
     private Dictionary<int, NFTMetadata> metadata;
     private Texture2D nftImage;
+    private EVMService evmService;
+    private string userLastMatchId;
+    private MatchInfo matchInfo;
 
-    void Start()
+
+    async void Start()
     {
+        selectedNfts = new List<int>();
+        evmService = new EVMService();
         metadata = new Dictionary<int, NFTMetadata>();
         aiCards = new List<GameObject>();
         playerCards = new List<GameObject>();
         singleMatchesState = new SingleMatchState[cardAmount];
         reorderSelectedNfts = new List<GameObject>();
         List<Coroutine> coroutines = new List<Coroutine>();
+        string userLastMatchId = PlayerPrefs.GetString("MatchId");
+        string matchInfoResponse = await evmService.GetMatchInfoById(userLastMatchId);
+        matchInfo = JsonConvert.DeserializeObject<MatchInfo>(matchInfoResponse);
+        cardAmount = int.Parse(matchInfo.nftMatchCount);
         Instantiate(boards[cardAmount-1]);
         aiHand = GameObject.Find(AI_HAND_NAME);
         playerHand = GameObject.Find(PLAYER_HAND_NAME);
-        GenerateRandomMatch();
+        for (int i = 0; i < cardAmount; i++) {
+            string playerResponse = await evmService.GetValidPlayerNft(userLastMatchId, i.ToString());
+            string computerResponse = await evmService.GetValidComputerNft(userLastMatchId, i.ToString());
+            selectedNfts.Add(int.Parse(playerResponse));
+            selectedNfts.Add(int.Parse(computerResponse));
+        }
+        playerNfts = selectedNfts.GetRange(0,cardAmount);
+        aiNfts = selectedNfts.GetRange(cardAmount,cardAmount);
+        //GenerateRandomMatch();
         foreach( Transform item in aiHand.GetComponentsInChildren<Transform>()) {
             if (item.name != AI_HAND_NAME && !item.name.Contains(FRAME_NAME) && !item.name.Contains(WIN_INDICATOR_NAME)) {
                aiCards.Add(item.gameObject);

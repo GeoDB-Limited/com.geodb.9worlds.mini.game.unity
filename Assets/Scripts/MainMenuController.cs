@@ -29,10 +29,10 @@ public class MainMenuController : MonoBehaviour
     public GameObject infoText;
     public string account;
 
-    private EVMService eVMService;
+    private EVMService evmService;
 
     public void Connect() {
-        eVMService = new EVMService();
+        evmService = new EVMService();
         connectButton.SetActive(false);
         playButton.SetActive(false);
         optionsButton.SetActive(false);
@@ -67,35 +67,45 @@ public class MainMenuController : MonoBehaviour
 
     private async void CreatingMatch() {
         string txStatus = "";
-        string userLastMatchId = await eVMService.GetUserLastMatch(account);
-        if (userLastMatchId == "2") {
+        string userLastMatchId = await evmService.GetUserLastMatch(account);
+        if (userLastMatchId == "0") {
             infoText.GetComponent<TextMeshProUGUI>().text = CREATING_MATCH_TEXT;
-            string createMatchTxHash = await eVMService.CreateMatch(2);
+            string createMatchTxHash = await evmService.CreateMatch(2);
             while (txStatus == "" || txStatus == "pending") {
-                txStatus = await eVMService.TxStatus(createMatchTxHash);
+                txStatus = await evmService.TxStatus(createMatchTxHash);
             }
             infoText.GetComponent<TextMeshProUGUI>().text = WAITING_RANDOM_SEED_TEXT;
-            userLastMatchId = await eVMService.GetUserLastMatch(account);
+            userLastMatchId = await evmService.GetUserLastMatch(account);
             string randomSeed = "0";
+            int count = 0;
             while (randomSeed == "0") {
-                string matchInfoResponse = await eVMService.GetMatchInfoById(userLastMatchId);
+                await new WaitForSeconds(1f);
+                Debug.Log(count);
+                count++;
+                string matchInfoResponse = await evmService.GetMatchInfoById(userLastMatchId);
                 MatchInfo matchInfo = JsonConvert.DeserializeObject<MatchInfo>(matchInfoResponse);
                 randomSeed = matchInfo.matchRandomSeed;
             }
             infoText.GetComponent<TextMeshProUGUI>().text = INITIALIZING_MATCH_TEXT;
             txStatus = "";
+            string initMatchTxHash = await evmService.InitializeMatch(account);
             while (txStatus == "" || txStatus == "pending") {
-                string initMatchTxHash = await eVMService.InitializeMatch(account);
-                txStatus = await eVMService.TxStatus(initMatchTxHash);
+                txStatus = await evmService.TxStatus(initMatchTxHash);
             }
         } else {
             try {
-                string response = await eVMService.GetValidPlayerNft(userLastMatchId, "0");
-                Debug.Log(response);
+                string response = await evmService.GetValidPlayerNft(userLastMatchId, "0");
             } catch (Exception e) {
-                Debug.Log(e);
+                txStatus = "";
+                infoText.GetComponent<TextMeshProUGUI>().text = INITIALIZING_MATCH_TEXT;
+                string initMatchTxHash = await evmService.InitializeMatch(account);
+                while (txStatus == "" || txStatus == "pending") {
+                    txStatus = await evmService.TxStatus(initMatchTxHash);
+                    Debug.Log("Status:" + txStatus);
+                }
             }
         }
         SceneManager.LoadScene(BOARD_GAME_SCENE_NAME);
+        PlayerPrefs.SetString("MatchId", userLastMatchId);
     }   
 }

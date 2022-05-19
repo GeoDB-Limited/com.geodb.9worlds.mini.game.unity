@@ -21,21 +21,44 @@ public class EVMService
     {
         string method = "usersLastMatchId";
         string args = "[\"" + account + "\"]";
-        return await EVM.Call(chain, network, contract, abi, method, args);
+        try {
+            return await EVM.Call(chain, network, contract, abi, method, args);
+        } catch (Exception e) {
+            throw e;
+        }
     }
 
     public async System.Threading.Tasks.Task<string> GetMatchInfoById(string id)
     {
         string method = "matchesById";
         string args = "[\"" + id + "\"]";
-        return await EVM.Call(chain, network, contract, abi, method, args);
+        try {
+            return await EVM.Call(chain, network, contract, abi, method, args);
+        } catch (Exception e) {
+            throw e;
+        }
     }
 
     public async System.Threading.Tasks.Task<string> GetValidPlayerNft(string matchId, string index)
     {
         string method = "getValidPlayerNft";
         string args = "[\"" + matchId + "\", \"" + index + "\"]";
-        return await EVM.Call(chain, network, contract, abi, method, args);
+        try {
+            return await EVM.Call(chain, network, contract, abi, method, args);
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
+    public async System.Threading.Tasks.Task<string> GetValidComputerNft(string matchId, string index)
+    {
+        string method = "getValidcomputerNft";
+        string args = "[\"" + matchId + "\", \"" + index + "\"]";
+        try {
+            return await EVM.Call(chain, network, contract, abi, method, args);
+        } catch (Exception e) {
+            throw e;
+        }
     }
 
     public async System.Threading.Tasks.Task<string> CreateMatch(int numberOfNfts)
