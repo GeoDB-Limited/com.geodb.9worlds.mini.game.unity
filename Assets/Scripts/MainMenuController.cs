@@ -1,23 +1,38 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Runtime.InteropServices;
 using TMPro;
+using Newtonsoft.Json;
 
 public class MainMenuController : MonoBehaviour
 {
+    [DllImport("__Internal")]
+    private static extern void Web3Connect();
+    [DllImport("__Internal")]
+    private static extern string ConnectAccount();
+    [DllImport("__Internal")]
+    private static extern void SetConnectAccount(string value);
+
     private const string CONNECTING_TEXT = "Connecting...";
     private const string GETTING_MATCH_INFO_TEXT = "Getting\nmatch\ninfo...";
     private const string CREATING_MATCH_TEXT = "Creating\nmatch...";
     private const string INITIALIZING_MATCH_TEXT = "Initializing\nmatch...";
+    private const string WAITING_RANDOM_SEED_TEXT = "Waiting for\nrandom seed...";
     private const string BOARD_GAME_SCENE_NAME = "BoardGame";
 
     public GameObject connectButton;
     public GameObject playButton;
     public GameObject optionsButton;
     public GameObject infoText;
+    public string account;
+
+    private EVMService eVMService;
 
     public void Connect() {
+        eVMService = new EVMService();
         connectButton.SetActive(false);
         playButton.SetActive(false);
         optionsButton.SetActive(false);
@@ -32,24 +47,55 @@ public class MainMenuController : MonoBehaviour
         optionsButton.SetActive(false);
         infoText.SetActive(true);
         infoText.GetComponent<TextMeshProUGUI>().text = GETTING_MATCH_INFO_TEXT;
-        StartCoroutine(CreatingMatch());
+        CreatingMatch();
     }
 
     private IEnumerator ConnectToMetamask() {
-        yield return new WaitForSeconds(1f);
+        Web3Connect();
+        account = ConnectAccount();
+        while (account == "") {
+            yield return new WaitForSeconds(1f);
+            account = ConnectAccount();
+        };
+        PlayerPrefs.SetString("Account", account);
+        SetConnectAccount("");
         connectButton.SetActive(false);
         playButton.SetActive(true);
         optionsButton.SetActive(true);
         infoText.SetActive(false);
     }
 
-    private IEnumerator CreatingMatch() {
-        yield return new WaitForSeconds(1f);
-        infoText.GetComponent<TextMeshProUGUI>().text = CREATING_MATCH_TEXT;
-        yield return new WaitForSeconds(1f);
-        infoText.GetComponent<TextMeshProUGUI>().text = INITIALIZING_MATCH_TEXT;
-        yield return new WaitForSeconds(1f);
+    private async void CreatingMatch() {
+        string txStatus = "";
+        string userLastMatchId = await eVMService.GetUserLastMatch(account);
+        if (userLastMatchId == "2") {
+            infoText.GetComponent<TextMeshProUGUI>().text = CREATING_MATCH_TEXT;
+            string createMatchTxHash = await eVMService.CreateMatch(2);
+            while (txStatus == "" || txStatus == "pending") {
+                txStatus = await eVMService.TxStatus(createMatchTxHash);
+            }
+            infoText.GetComponent<TextMeshProUGUI>().text = WAITING_RANDOM_SEED_TEXT;
+            userLastMatchId = await eVMService.GetUserLastMatch(account);
+            string randomSeed = "0";
+            while (randomSeed == "0") {
+                string matchInfoResponse = await eVMService.GetMatchInfoById(userLastMatchId);
+                MatchInfo matchInfo = JsonConvert.DeserializeObject<MatchInfo>(matchInfoResponse);
+                randomSeed = matchInfo.matchRandomSeed;
+            }
+            infoText.GetComponent<TextMeshProUGUI>().text = INITIALIZING_MATCH_TEXT;
+            txStatus = "";
+            while (txStatus == "" || txStatus == "pending") {
+                string initMatchTxHash = await eVMService.InitializeMatch(account);
+                txStatus = await eVMService.TxStatus(initMatchTxHash);
+            }
+        } else {
+            try {
+                string response = await eVMService.GetValidPlayerNft(userLastMatchId, "0");
+                Debug.Log(response);
+            } catch (Exception e) {
+                Debug.Log(e);
+            }
+        }
         SceneManager.LoadScene(BOARD_GAME_SCENE_NAME);
-    }
-        
+    }   
 }

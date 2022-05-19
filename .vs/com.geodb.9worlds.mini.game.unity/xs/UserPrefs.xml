@@ -1,24 +1,28 @@
 ﻿<Properties StartupConfiguration="{49576B57-3F06-610A-1DD0-4A88AD495ADE}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/NFTController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Web3Unity/Scripts/Scenes/WebLogin.cs">
     <Files>
       <File FileName="Assets/JsonDotNet/Assemblies/Standalone/Newtonsoft.Json.XML" Line="1" Column="1" />
       <File FileName="Assets/Scripts/GameController.cs" />
       <File FileName="Assets/Scripts/NFTGameObjectInfo.cs" />
-      <File FileName="Assets/Scripts/NFTController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/NFTController.cs" />
+      <File FileName="Assets/Web3Unity/Scripts/Scenes/WebLogin.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="com.geodb.9worlds.mini.game.unity" expanded="True">
-            <Node name="Assets" expanded="True">
+            <Node name="Assets" expanded="True" selected="True">
               <Node name="JsonDotNet" expanded="True">
                 <Node name="Assemblies" expanded="True">
-                  <Node name="Standalone" expanded="True">
-                    <Node name="Newtonsoft.Json.XML" selected="True" />
-                  </Node>
+                  <Node name="Standalone" expanded="True" />
                 </Node>
               </Node>
               <Node name="Scripts" expanded="True" />
+              <Node name="Web3Unity" expanded="True">
+                <Node name="Scripts" expanded="True">
+                  <Node name="Scenes" expanded="True" />
+                </Node>
+              </Node>
             </Node>
           </Node>
         </State>
@@ -27,7 +31,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="087df109-6453-4556-a243-6d76b9e11fa5" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="061f469e-8c56-40cd-acd3-aa7cf652cdf3" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
