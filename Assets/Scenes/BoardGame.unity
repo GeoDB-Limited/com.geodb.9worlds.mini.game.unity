@@ -429,13 +429,13 @@ MonoBehaviour:
   m_text: Reorder
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 48aeec08271ad4d5e848088bc52505a4, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 1890086503382896995, guid: 48aeec08271ad4d5e848088bc52505a4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
+    rgba: 4288135667
   m_fontColor: {r: 0.9529412, g: 0.75686276, b: 0.5921569, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -769,7 +769,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 542, y: -57}
+  m_AnchoredPosition: {x: 542, y: -144}
   m_SizeDelta: {x: 147.9, y: 71.47}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &183240681
@@ -1175,7 +1175,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Loading board...
+  m_text: 'Loading cards...
+
+    0 out of -'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 48aeec08271ad4d5e848088bc52505a4, type: 2}
   m_sharedMaterial: {fileID: 1890086503382896995, guid: 48aeec08271ad4d5e848088bc52505a4, type: 2}
@@ -1735,7 +1737,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 542, y: -57}
+  m_AnchoredPosition: {x: 542, y: -144}
   m_SizeDelta: {x: 147.9, y: 71.47}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &613841985
@@ -2248,7 +2250,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &901033897
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2441,7 +2443,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 542, y: 34.8}
+  m_AnchoredPosition: {x: 542, y: -52.199993}
   m_SizeDelta: {x: 147.9, y: 71.47}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &989068372
@@ -3924,13 +3926,13 @@ MonoBehaviour:
   m_text: Swap
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 48aeec08271ad4d5e848088bc52505a4, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 1890086503382896995, guid: 48aeec08271ad4d5e848088bc52505a4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
+    rgba: 4288135667
   m_fontColor: {r: 0.9529412, g: 0.75686276, b: 0.5921569, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -5021,6 +5023,7 @@ MonoBehaviour:
   powerWinIndicator: {fileID: 1249931818}
   reorderButton: {fileID: 613841983}
   loadingScreen: {fileID: 937024392}
+  loadingText: {fileID: 313008088}
   cancelReorderButton: {fileID: 179640820}
   swapButton: {fileID: 989068370}
   txInfoWindow: {fileID: 1420829319}

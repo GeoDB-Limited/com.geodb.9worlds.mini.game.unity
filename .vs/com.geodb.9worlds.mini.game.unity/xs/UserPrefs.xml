@@ -1,8 +1,8 @@
 ﻿<Properties StartupConfiguration="{49576B57-3F06-610A-1DD0-4A88AD495ADE}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Web3Unity/Scripts/Scenes/WebLogin.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/GameController.cs">
     <Files>
-      <File FileName="Assets/JsonDotNet/Assemblies/Standalone/Newtonsoft.Json.XML" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/GameController.cs" />
+      <File FileName="Assets/Scripts/GameController.cs" Line="271" Column="1" />
+      <File FileName="Assets/JsonDotNet/Assemblies/Standalone/Newtonsoft.Json.XML" />
       <File FileName="Assets/Scripts/NFTGameObjectInfo.cs" />
       <File FileName="Assets/Scripts/NFTController.cs" />
       <File FileName="Assets/Web3Unity/Scripts/Scenes/WebLogin.cs" Line="1" Column="1" />
@@ -11,13 +11,15 @@
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="com.geodb.9worlds.mini.game.unity" expanded="True">
-            <Node name="Assets" expanded="True" selected="True">
+            <Node name="Assets" expanded="True">
               <Node name="JsonDotNet" expanded="True">
                 <Node name="Assemblies" expanded="True">
                   <Node name="Standalone" expanded="True" />
                 </Node>
               </Node>
-              <Node name="Scripts" expanded="True" />
+              <Node name="Scripts" expanded="True">
+                <Node name="GameController.cs" selected="True" />
+              </Node>
               <Node name="Web3Unity" expanded="True">
                 <Node name="Scripts" expanded="True">
                   <Node name="Scenes" expanded="True" />
@@ -31,7 +33,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="061f469e-8c56-40cd-acd3-aa7cf652cdf3" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="d1df3075-fdaa-4e21-ae87-5dc6c031452d" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

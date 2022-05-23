@@ -15,12 +15,14 @@ public class MainMenuController : MonoBehaviour
     private static extern string ConnectAccount();
     [DllImport("__Internal")]
     private static extern void SetConnectAccount(string value);
+    [DllImport("__Internal")]
+    private static extern void ReloadWindow();
 
     private const string CONNECTING_TEXT = "Connecting...";
     private const string GETTING_MATCH_INFO_TEXT = "Getting\nmatch\ninfo...";
     private const string CREATING_MATCH_TEXT = "Creating\nmatch...";
     private const string INITIALIZING_MATCH_TEXT = "Initializing\nmatch...";
-    private const string WAITING_RANDOM_SEED_TEXT = "Waiting for\nrandom seed...";
+    private const string WAITING_RANDOM_SEED_TEXT = "Waiting for\nrandom seed...\n\n0 secs\n\nup to\n60 seconds";
     private const string BOARD_GAME_SCENE_NAME = "BoardGame";
 
     public GameObject connectButton;
@@ -77,8 +79,10 @@ public class MainMenuController : MonoBehaviour
         string balanceOf = await evmService.BalanceOf(account);
         selectorController.SetMaxAmount(int.Parse(balanceOf));
         string userLastMatchId = await evmService.GetUserLastMatch(account);
+        string matchInfoResponse = await evmService.GetMatchInfoById(userLastMatchId);
+        MatchInfo matchInfo = JsonConvert.DeserializeObject<MatchInfo>(matchInfoResponse);
         Debug.Log("UserLastMatch: " + userLastMatchId);
-        if (userLastMatchId == "5")
+        if (userLastMatchId == "0" || matchInfo.isMatchFinished)
         {
             cardSelector.SetActive(true);
             infoText.SetActive(false);
@@ -92,8 +96,29 @@ public class MainMenuController : MonoBehaviour
             catch (Exception e)
             {
                 txStatus = "";
+                userLastMatchId = await evmService.GetUserLastMatch(account);
+                string randomSeed = "0";
+                int count = 0;
+                while (randomSeed == "0")
+                {
+                    await new WaitForSeconds(1f);
+                    Debug.Log(count);
+                    count++;
+                    matchInfoResponse = await evmService.GetMatchInfoById(userLastMatchId);
+                    matchInfo = JsonConvert.DeserializeObject<MatchInfo>(matchInfoResponse);
+                    randomSeed = matchInfo.matchRandomSeed;
+                    infoText.GetComponent<TextMeshProUGUI>().text = "Waiting for\nrandom seed...\n\n" + count + "secs\n\nup to\n60 seconds";
+                }
                 infoText.GetComponent<TextMeshProUGUI>().text = INITIALIZING_MATCH_TEXT;
-                string initMatchTxHash = await evmService.InitializeMatch(account);
+                string initMatchTxHash = "";
+                try
+                {
+                    initMatchTxHash = await evmService.InitializeMatch(account);
+                }
+                catch (Exception er)
+                {
+                    ReloadWindow();
+                }
                 while (txStatus == "" || txStatus == "pending")
                 {
                     txStatus = await evmService.TxStatus(initMatchTxHash);
@@ -111,7 +136,15 @@ public class MainMenuController : MonoBehaviour
         infoText.SetActive(true);
         string txStatus = "";
         infoText.GetComponent<TextMeshProUGUI>().text = CREATING_MATCH_TEXT;
-        string createMatchTxHash = await evmService.CreateMatch(selectorController.amountSelected);
+        string createMatchTxHash = "";
+        try
+        {
+            createMatchTxHash = await evmService.CreateMatch(selectorController.amountSelected);
+        }
+        catch (Exception e)
+        {
+            ReloadWindow();
+        }
         while (txStatus == "" || txStatus == "pending")
         {
             txStatus = await evmService.TxStatus(createMatchTxHash);
@@ -128,10 +161,19 @@ public class MainMenuController : MonoBehaviour
             string matchInfoResponse = await evmService.GetMatchInfoById(userLastMatchId);
             MatchInfo matchInfo = JsonConvert.DeserializeObject<MatchInfo>(matchInfoResponse);
             randomSeed = matchInfo.matchRandomSeed;
+            infoText.GetComponent<TextMeshProUGUI>().text = "Waiting for\nrandom seed...\n\n" + count + "secs\n\nup to\n60 seconds";
         }
         infoText.GetComponent<TextMeshProUGUI>().text = INITIALIZING_MATCH_TEXT;
         txStatus = "";
-        string initMatchTxHash = await evmService.InitializeMatch(account);
+        string initMatchTxHash = "";
+        try
+        {
+            initMatchTxHash = await evmService.InitializeMatch(account);
+        }
+        catch (Exception e)
+        {
+            ReloadWindow();
+        }
         while (txStatus == "" || txStatus == "pending")
         {
             txStatus = await evmService.TxStatus(initMatchTxHash);

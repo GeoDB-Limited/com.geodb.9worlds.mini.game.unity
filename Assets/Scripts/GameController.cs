@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.Networking;
 using Newtonsoft.Json;
 using TMPro;
@@ -48,6 +47,7 @@ public class GameController : MonoBehaviour
 
     public GameObject reorderButton;
     public GameObject loadingScreen;
+    public GameObject loadingText;
     public GameObject cancelReorderButton;
     public GameObject swapButton;
     public GameObject txInfoWindow;
@@ -282,13 +282,21 @@ public class GameController : MonoBehaviour
     {
         string txStatus = "";
         TextMeshProUGUI txInfo = GameObject.Find(TX_INFO_TEXT_NAME).GetComponent<TextMeshProUGUI>();
-        if (firstSelectedIndex != -1 && secondSelectedIndex != -1)
+        try
         {
-            resolveTxHash = await evmService.ResolveMatchReorder(firstSelectedIndex, secondSelectedIndex);
+            if (firstSelectedIndex != -1 && secondSelectedIndex != -1)
+            {
+                resolveTxHash = await evmService.ResolveMatchReorder(firstSelectedIndex, secondSelectedIndex);
+            }
+            else
+            {
+                resolveTxHash = await evmService.ResolveMatch();
+            }
         }
-        else
+        catch (System.Exception e)
         {
-            resolveTxHash = await evmService.ResolveMatch();
+            txInfoWindow.SetActive(false);
+            return;
         }
         txInfo.text = WATING_FOR_TX_CONFIRM_TEXT;
         while (txStatus == "" || txStatus == "pending")
@@ -369,6 +377,7 @@ public class GameController : MonoBehaviour
                 if (loadedCards < cardAmount * 2)
                 {
                     loadedCards++;
+                    loadingText.GetComponent<TextMeshProUGUI>().text = "Loading cards...\n" + loadedCards + " out of " + cardAmount * 2;
                 }
                 else
                 {
