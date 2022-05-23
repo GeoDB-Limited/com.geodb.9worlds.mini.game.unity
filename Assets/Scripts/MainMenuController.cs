@@ -28,10 +28,13 @@ public class MainMenuController : MonoBehaviour
     public GameObject optionsButton;
     public GameObject infoText;
     public string account;
+    public GameObject cardSelector;
+    public CardSelectorController selectorController;
 
     private EVMService evmService;
 
-    public void Connect() {
+    public void Connect()
+    {
         evmService = new EVMService();
         connectButton.SetActive(false);
         playButton.SetActive(false);
@@ -41,7 +44,8 @@ public class MainMenuController : MonoBehaviour
         StartCoroutine(ConnectToMetamask());
     }
 
-    public void Play() {
+    public void Play()
+    {
         connectButton.SetActive(false);
         playButton.SetActive(false);
         optionsButton.SetActive(false);
@@ -50,10 +54,12 @@ public class MainMenuController : MonoBehaviour
         CreatingMatch();
     }
 
-    private IEnumerator ConnectToMetamask() {
+    private IEnumerator ConnectToMetamask()
+    {
         Web3Connect();
         account = ConnectAccount();
-        while (account == "") {
+        while (account == "")
+        {
             yield return new WaitForSeconds(1f);
             account = ConnectAccount();
         };
@@ -65,47 +71,72 @@ public class MainMenuController : MonoBehaviour
         infoText.SetActive(false);
     }
 
-    private async void CreatingMatch() {
+    private async void CreatingMatch()
+    {
         string txStatus = "";
+        string balanceOf = await evmService.BalanceOf(account);
+        selectorController.SetMaxAmount(int.Parse(balanceOf));
         string userLastMatchId = await evmService.GetUserLastMatch(account);
-        if (userLastMatchId == "0") {
-            infoText.GetComponent<TextMeshProUGUI>().text = CREATING_MATCH_TEXT;
-            string createMatchTxHash = await evmService.CreateMatch(2);
-            while (txStatus == "" || txStatus == "pending") {
-                txStatus = await evmService.TxStatus(createMatchTxHash);
-            }
-            infoText.GetComponent<TextMeshProUGUI>().text = WAITING_RANDOM_SEED_TEXT;
-            userLastMatchId = await evmService.GetUserLastMatch(account);
-            string randomSeed = "0";
-            int count = 0;
-            while (randomSeed == "0") {
-                await new WaitForSeconds(1f);
-                Debug.Log(count);
-                count++;
-                string matchInfoResponse = await evmService.GetMatchInfoById(userLastMatchId);
-                MatchInfo matchInfo = JsonConvert.DeserializeObject<MatchInfo>(matchInfoResponse);
-                randomSeed = matchInfo.matchRandomSeed;
-            }
-            infoText.GetComponent<TextMeshProUGUI>().text = INITIALIZING_MATCH_TEXT;
-            txStatus = "";
-            string initMatchTxHash = await evmService.InitializeMatch(account);
-            while (txStatus == "" || txStatus == "pending") {
-                txStatus = await evmService.TxStatus(initMatchTxHash);
-            }
-        } else {
-            try {
+        Debug.Log("UserLastMatch: " + userLastMatchId);
+        if (userLastMatchId == "5")
+        {
+            cardSelector.SetActive(true);
+            infoText.SetActive(false);
+        }
+        else
+        {
+            try
+            {
                 string response = await evmService.GetValidPlayerNft(userLastMatchId, "0");
-            } catch (Exception e) {
+            }
+            catch (Exception e)
+            {
                 txStatus = "";
                 infoText.GetComponent<TextMeshProUGUI>().text = INITIALIZING_MATCH_TEXT;
                 string initMatchTxHash = await evmService.InitializeMatch(account);
-                while (txStatus == "" || txStatus == "pending") {
+                while (txStatus == "" || txStatus == "pending")
+                {
                     txStatus = await evmService.TxStatus(initMatchTxHash);
                     Debug.Log("Status:" + txStatus);
                 }
             }
+            SceneManager.LoadScene(BOARD_GAME_SCENE_NAME);
+            PlayerPrefs.SetString("MatchId", userLastMatchId);
+        }
+    }
+
+    public async void ContinueCreatingMatch()
+    {
+        cardSelector.SetActive(false);
+        infoText.SetActive(true);
+        string txStatus = "";
+        infoText.GetComponent<TextMeshProUGUI>().text = CREATING_MATCH_TEXT;
+        string createMatchTxHash = await evmService.CreateMatch(selectorController.amountSelected);
+        while (txStatus == "" || txStatus == "pending")
+        {
+            txStatus = await evmService.TxStatus(createMatchTxHash);
+        }
+        infoText.GetComponent<TextMeshProUGUI>().text = WAITING_RANDOM_SEED_TEXT;
+        string userLastMatchId = await evmService.GetUserLastMatch(account);
+        string randomSeed = "0";
+        int count = 0;
+        while (randomSeed == "0")
+        {
+            await new WaitForSeconds(1f);
+            Debug.Log(count);
+            count++;
+            string matchInfoResponse = await evmService.GetMatchInfoById(userLastMatchId);
+            MatchInfo matchInfo = JsonConvert.DeserializeObject<MatchInfo>(matchInfoResponse);
+            randomSeed = matchInfo.matchRandomSeed;
+        }
+        infoText.GetComponent<TextMeshProUGUI>().text = INITIALIZING_MATCH_TEXT;
+        txStatus = "";
+        string initMatchTxHash = await evmService.InitializeMatch(account);
+        while (txStatus == "" || txStatus == "pending")
+        {
+            txStatus = await evmService.TxStatus(initMatchTxHash);
         }
         SceneManager.LoadScene(BOARD_GAME_SCENE_NAME);
         PlayerPrefs.SetString("MatchId", userLastMatchId);
-    }   
+    }
 }

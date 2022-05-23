@@ -17,9 +17,13 @@ public enum SingleMatchState
 public class GameController : MonoBehaviour
 {
     [DllImport("__Internal")]
-     private static extern void OpenURLInExternalWindow(string url);
+    private static extern void OpenURLInExternalWindow(string url);
+
+    [DllImport("__Internal")]
+    private static extern void ReloadWindow();
 
     private const string BASE_URI = "https://odin9worldsmidgard.mypinata.cloud/ipfs/QmTgJNNnaF2tcaXNufmkjKHEUquJA45sW9V9bBw2MdgEDn/";
+    private const string POLYGON_SCAN_BASE_URL = "https://mumbai.polygonscan.com/tx/";
     private const string BASE_EXTENSION = ".json";
     private const string AI_HAND_NAME = "AIHand";
     private const string PLAYER_HAND_NAME = "PlayerHand";
@@ -43,6 +47,7 @@ public class GameController : MonoBehaviour
     public GameObject powerWinIndicator;
 
     public GameObject reorderButton;
+    public GameObject loadingScreen;
     public GameObject cancelReorderButton;
     public GameObject swapButton;
     public GameObject txInfoWindow;
@@ -58,7 +63,7 @@ public class GameController : MonoBehaviour
     public List<int> selectedNfts;
     public List<int> playerNfts;
     public List<int> aiNfts;
-    public SingleMatchState[] singleMatchesState; 
+    public SingleMatchState[] singleMatchesState;
     public bool isReorderSelectionActive = false;
     public List<GameObject> reorderSelectedNfts;
 
@@ -67,84 +72,112 @@ public class GameController : MonoBehaviour
     private EVMService evmService;
     private string userLastMatchId;
     private MatchInfo matchInfo;
+    private string resolveTxHash = "";
+    private int loadedCards = 1;
+    private int firstSelectedIndex = -1;
+    private int secondSelectedIndex = -1;
 
 
     async void Start()
     {
+        loadingScreen.SetActive(true);
         selectedNfts = new List<int>();
         evmService = new EVMService();
         metadata = new Dictionary<int, NFTMetadata>();
         aiCards = new List<GameObject>();
         playerCards = new List<GameObject>();
-        singleMatchesState = new SingleMatchState[cardAmount];
         reorderSelectedNfts = new List<GameObject>();
         List<Coroutine> coroutines = new List<Coroutine>();
         string userLastMatchId = PlayerPrefs.GetString("MatchId");
         string matchInfoResponse = await evmService.GetMatchInfoById(userLastMatchId);
         matchInfo = JsonConvert.DeserializeObject<MatchInfo>(matchInfoResponse);
         cardAmount = int.Parse(matchInfo.nftMatchCount);
-        Instantiate(boards[cardAmount-1]);
+        singleMatchesState = new SingleMatchState[cardAmount];
+        Instantiate(boards[cardAmount - 1]);
         aiHand = GameObject.Find(AI_HAND_NAME);
         playerHand = GameObject.Find(PLAYER_HAND_NAME);
-        for (int i = 0; i < cardAmount; i++) {
+        for (int i = 0; i < cardAmount; i++)
+        {
             string playerResponse = await evmService.GetValidPlayerNft(userLastMatchId, i.ToString());
             string computerResponse = await evmService.GetValidComputerNft(userLastMatchId, i.ToString());
             selectedNfts.Add(int.Parse(playerResponse));
             selectedNfts.Add(int.Parse(computerResponse));
         }
-        playerNfts = selectedNfts.GetRange(0,cardAmount);
-        aiNfts = selectedNfts.GetRange(cardAmount,cardAmount);
-        //GenerateRandomMatch();
-        foreach( Transform item in aiHand.GetComponentsInChildren<Transform>()) {
-            if (item.name != AI_HAND_NAME && !item.name.Contains(FRAME_NAME) && !item.name.Contains(WIN_INDICATOR_NAME)) {
-               aiCards.Add(item.gameObject);
+        playerNfts = selectedNfts.GetRange(0, cardAmount);
+        aiNfts = selectedNfts.GetRange(cardAmount, cardAmount);
+        foreach (Transform item in aiHand.GetComponentsInChildren<Transform>())
+        {
+            if (item.name != AI_HAND_NAME && !item.name.Contains(FRAME_NAME) && !item.name.Contains(WIN_INDICATOR_NAME))
+            {
+                aiCards.Add(item.gameObject);
             }
         }
-        foreach( Transform item in playerHand.GetComponentsInChildren<Transform>()) {
-            if (item.name != PLAYER_HAND_NAME && !item.name.Contains(OUTLINE_NAME) && !item.name.Contains(FRAME_NAME) && !item.name.Contains(WIN_INDICATOR_NAME)) {
+        foreach (Transform item in playerHand.GetComponentsInChildren<Transform>())
+        {
+            if (item.name != PLAYER_HAND_NAME && !item.name.Contains(OUTLINE_NAME) && !item.name.Contains(FRAME_NAME) && !item.name.Contains(WIN_INDICATOR_NAME))
+            {
                 playerCards.Add(item.gameObject);
-            } else if (item.name == WIN_INDICATOR_NAME) {
+            }
+            else if (item.name == WIN_INDICATOR_NAME)
+            {
                 playerWinIndicators.Add(item.gameObject);
             }
         }
-        for (int i = 0; i < aiNfts.Count; i++) {
+        for (int i = 0; i < aiNfts.Count; i++)
+        {
             coroutines.Add(StartCoroutine(GetRequest(aiNfts[i], i, true)));
         }
-        for (int i = 0; i < playerNfts.Count; i++) {
+        for (int i = 0; i < playerNfts.Count; i++)
+        {
             coroutines.Add(StartCoroutine(GetRequest(playerNfts[i], i, false)));
         }
     }
 
-    public void RerollMatch() {
-        Scene scene = SceneManager.GetActiveScene(); 
-        SceneManager.LoadScene(scene.name);
+    public void Reload()
+    {
+        ReloadWindow();
     }
 
-    public void Battle() {
+    public void Battle()
+    {
         int aiPoints = 0;
         int playerPoints = 0;
-        for (int i = 0; i < aiCards.Count; i++) {
-            int aiType = (int) aiCards[i].GetComponent<NFTGameObjectInfo>().weaponType;
-            int playerType = (int) playerCards[i].GetComponent<NFTGameObjectInfo>().weaponType;
-            if (aiType == 0 && playerType == 1) {
+        for (int i = 0; i < aiCards.Count; i++)
+        {
+            int aiType = (int)aiCards[i].GetComponent<NFTGameObjectInfo>().weaponType;
+            int playerType = (int)playerCards[i].GetComponent<NFTGameObjectInfo>().weaponType;
+            if (aiType == 0 && playerType == 1)
+            {
                 aiPoints++;
                 singleMatchesState[i] = SingleMatchState.AIWinner;
-            } else if (aiType == 0 && playerType == 2) {
+            }
+            else if (aiType == 0 && playerType == 2)
+            {
                 playerPoints++;
                 singleMatchesState[i] = SingleMatchState.PlayerWinner;
-            } else if (aiType == 1 && playerType == 2) {
+            }
+            else if (aiType == 1 && playerType == 2)
+            {
                 aiPoints++;
                 singleMatchesState[i] = SingleMatchState.AIWinner;
-            } else if (aiType == 1 && playerType == 0) {
+            }
+            else if (aiType == 1 && playerType == 0)
+            {
                 playerPoints++;
                 singleMatchesState[i] = SingleMatchState.PlayerWinner;
-            } else if (aiType == 2 && playerType == 0) {
+            }
+            else if (aiType == 2 && playerType == 0)
+            {
                 aiPoints++;
                 singleMatchesState[i] = SingleMatchState.AIWinner;
-            } else if (aiType == 2 && playerType == 1) {
+            }
+            else if (aiType == 2 && playerType == 1)
+            {
                 playerPoints++;
                 singleMatchesState[i] = SingleMatchState.PlayerWinner;
-            } else {
+            }
+            else
+            {
                 singleMatchesState[i] = SingleMatchState.Tie;
             }
         }
@@ -152,35 +185,46 @@ public class GameController : MonoBehaviour
         TextMeshProUGUI resultInfoText = GameObject.Find(RESULT_INFO_TEXT_NAME).GetComponent<TextMeshProUGUI>();
         resultInfoText.text = playerPoints + " - " + aiPoints;
         TextMeshProUGUI winText = GameObject.Find(WIN_TEXT_NAME).GetComponent<TextMeshProUGUI>();
-        GameObject[] winIcons= GameObject.FindGameObjectsWithTag(WIN_ICON_TAG);
-        if (aiPoints > playerPoints) {
+        GameObject[] winIcons = GameObject.FindGameObjectsWithTag(WIN_ICON_TAG);
+        if (aiPoints > playerPoints)
+        {
             winText.text = "Defeat!";
             winIcons[0].GetComponent<WinIconController>().iconState = IconState.Win;
             winIcons[1].GetComponent<WinIconController>().iconState = IconState.Win;
-        } else if (aiPoints < playerPoints) {
+        }
+        else if (aiPoints < playerPoints)
+        {
             winText.text = "Victory!";
             winIcons[0].GetComponent<WinIconController>().iconState = IconState.Lose;
             winIcons[1].GetComponent<WinIconController>().iconState = IconState.Lose;
-        } else {
+        }
+        else
+        {
             winText.text = "Tie!";
             winIcons[0].GetComponent<WinIconController>().iconState = IconState.Tie;
             winIcons[1].GetComponent<WinIconController>().iconState = IconState.Tie;
         }
     }
 
-    public void ToggleReorderSelection() {
+    public void ToggleReorderSelection()
+    {
         isReorderSelectionActive = !isReorderSelectionActive;
         reorderButton.SetActive(!isReorderSelectionActive);
         cancelReorderButton.SetActive(isReorderSelectionActive);
     }
 
-    public bool selectReorderNFT(GameObject selectedItem) {
+    public bool selectReorderNFT(GameObject selectedItem)
+    {
         bool wasItemAdded = false;
-        if (reorderSelectedNfts.Count < 2 && !reorderSelectedNfts.Contains(selectedItem)) {
+        if (reorderSelectedNfts.Count < 2 && !reorderSelectedNfts.Contains(selectedItem))
+        {
             reorderSelectedNfts.Add(selectedItem);
             wasItemAdded = true;
-        } else {
-            if (reorderSelectedNfts.Contains(selectedItem)) {
+        }
+        else
+        {
+            if (reorderSelectedNfts.Contains(selectedItem))
+            {
                 reorderSelectedNfts.Remove(selectedItem);
             }
         }
@@ -188,62 +232,88 @@ public class GameController : MonoBehaviour
         return wasItemAdded;
     }
 
-    public void SwapNFTs() {
-        int firstSelectedIndex = playerCards.IndexOf(reorderSelectedNfts[0]);
-        int secondSelectedIndex = playerCards.IndexOf(reorderSelectedNfts[1]);
+    public void SwapNFTs()
+    {
+        firstSelectedIndex = playerCards.IndexOf(reorderSelectedNfts[0]);
+        secondSelectedIndex = playerCards.IndexOf(reorderSelectedNfts[1]);
         playerCards[firstSelectedIndex] = reorderSelectedNfts[1];
         playerCards[secondSelectedIndex] = reorderSelectedNfts[0];
         reorderSelectedNfts[0].GetComponent<NFTController>().Swap(reorderSelectedNfts[1].transform.position);
         reorderSelectedNfts[1].GetComponent<NFTController>().Swap(reorderSelectedNfts[0].transform.position);
+        GameObject tmp = playerWinIndicators[firstSelectedIndex];
+        playerWinIndicators[firstSelectedIndex] = playerWinIndicators[secondSelectedIndex];
+        playerWinIndicators[secondSelectedIndex] = tmp;
         swapButton.SetActive(false);
         reorderButton.SetActive(false);
         cancelReorderButton.SetActive(false);
     }
 
-    public void OpenBrowserTx() {
-        OpenURLInExternalWindow("https://polygonscan.com/tx/0x1e879b606a0554a254d5bb03bd2460da4810bb7e330cd3f90b59a86bbff8d9f2");
+    public void OpenBrowserTx()
+    {
+        OpenURLInExternalWindow(POLYGON_SCAN_BASE_URL + resolveTxHash);
     }
 
-    public void ResolveMatch() {
+    public void ResolveMatch()
+    {
         txInfoWindow.SetActive(true);
-        StartCoroutine(ResolveMatchTransaction());
+        ResolveMatchTransaction();
     }
 
-    private void GenerateRandomMatch() {
+    private void GenerateRandomMatch()
+    {
         selectedNfts = new List<int>();
         HashSet<int> alreadyUsedIds = new HashSet<int>();
         alreadyUsedIds.Add(0);
-        for (int i = 0; i < cardAmount * 2; i++) {
+        for (int i = 0; i < cardAmount * 2; i++)
+        {
             int rand = 0;
-            while (alreadyUsedIds.Contains(rand)) {
+            while (alreadyUsedIds.Contains(rand))
+            {
                 rand = Random.Range(1, LAST_NFT_ID + 1);
                 selectedNfts.Add(rand);
             }
             alreadyUsedIds.Add(rand);
         }
-        playerNfts = selectedNfts.GetRange(0,cardAmount);
-        aiNfts = selectedNfts.GetRange(cardAmount,cardAmount);
+        playerNfts = selectedNfts.GetRange(0, cardAmount);
+        aiNfts = selectedNfts.GetRange(cardAmount, cardAmount);
     }
-    
-    private IEnumerator ResolveMatchTransaction() {
+
+    private async void ResolveMatchTransaction()
+    {
+        string txStatus = "";
         TextMeshProUGUI txInfo = GameObject.Find(TX_INFO_TEXT_NAME).GetComponent<TextMeshProUGUI>();
-        yield return new WaitForSeconds(3f);
+        if (firstSelectedIndex != -1 && secondSelectedIndex != -1)
+        {
+            resolveTxHash = await evmService.ResolveMatchReorder(firstSelectedIndex, secondSelectedIndex);
+        }
+        else
+        {
+            resolveTxHash = await evmService.ResolveMatch();
+        }
         txInfo.text = WATING_FOR_TX_CONFIRM_TEXT;
-        yield return new WaitForSeconds(3f);
+        while (txStatus == "" || txStatus == "pending")
+        {
+            txStatus = await evmService.TxStatus(resolveTxHash);
+        }
         txInfo.text = SUCCESS_TEXT;
-        yield return new WaitForSeconds(1f);
         Battle();
-        for (int i = 0; i < singleMatchesState.Length; i++) {
-            if (singleMatchesState[i] == SingleMatchState.Tie) {
+        Debug.Log(singleMatchesState.Length);
+        for (int i = 0; i < singleMatchesState.Length; i++)
+        {
+            if (singleMatchesState[i] == SingleMatchState.Tie)
+            {
                 playerWinIndicators[i].GetComponent<WinIndicatorController>().iconState = IconState.Tie;
-            } else if (singleMatchesState[i] == SingleMatchState.PlayerWinner) {
+            }
+            else if (singleMatchesState[i] == SingleMatchState.PlayerWinner)
+            {
                 playerWinIndicators[i].GetComponent<WinIndicatorController>().iconState = IconState.Win;
-            } else {
+            }
+            else
+            {
                 playerWinIndicators[i].GetComponent<WinIndicatorController>().iconState = IconState.Lose;
             }
         }
         txInfoWindow.SetActive(false);
-        //TODO: ResultWindow.SetActive(true);
     }
 
     private IEnumerator GetRequest(int nftId, int handIndex, bool isAI)
@@ -269,23 +339,40 @@ public class GameController : MonoBehaviour
                 nftImage = DownloadHandlerTexture.GetContent(textureRequest);
                 Sprite prefabSprite = aiCards[handIndex].GetComponent<SpriteRenderer>().sprite;
                 Sprite nftSprite = Sprite.Create(nftImage, new Rect(0, 0, nftImage.width, nftImage.height), new Vector2(0.5f, 0.5f), prefabSprite.pixelsPerUnit);
-                if (isAI) {
+                if (isAI)
+                {
                     aiCards[handIndex].GetComponent<SpriteRenderer>().sprite = nftSprite;
                     aiTotalPower += aiCards[handIndex].GetComponent<NFTGameObjectInfo>().Initialize(currentMetadata);
                     GameObject.Find(AI_TOTAL_POWER_NAME).GetComponent<TextMeshProUGUI>().text = "Power: " + aiTotalPower;
 
-                } else {
+                }
+                else
+                {
                     playerCards[handIndex].GetComponent<SpriteRenderer>().sprite = nftSprite;
                     playerTotalPower += playerCards[handIndex].GetComponent<NFTGameObjectInfo>().Initialize(currentMetadata);
                     GameObject.Find(PLAYER_TOTAL_POWER_NAME).GetComponent<TextMeshProUGUI>().text = "Power: " + playerTotalPower;
                 }
                 reorderButton.SetActive(playerTotalPower > aiTotalPower && cardAmount > 1);
-                if (playerTotalPower > aiTotalPower) {
+                if (playerTotalPower > aiTotalPower)
+                {
                     powerWinIndicator.GetComponent<WinIndicatorController>().iconState = IconState.Win;
-                } else if (playerTotalPower < aiTotalPower) {
+                }
+                else if (playerTotalPower < aiTotalPower)
+                {
                     powerWinIndicator.GetComponent<WinIndicatorController>().iconState = IconState.Lose;
-                } else {
+                }
+                else
+                {
                     powerWinIndicator.GetComponent<WinIndicatorController>().iconState = IconState.Tie;
+                }
+
+                if (loadedCards < cardAmount * 2)
+                {
+                    loadedCards++;
+                }
+                else
+                {
+                    loadingScreen.SetActive(false);
                 }
             }
 
