@@ -10,6 +10,8 @@ using Newtonsoft.Json;
 public class MainMenuController : MonoBehaviour
 {
     [DllImport("__Internal")]
+    private static extern void OpenURLInExternalWindow(string url);
+    [DllImport("__Internal")]
     private static extern void Web3Connect();
     [DllImport("__Internal")]
     private static extern string ConnectAccount();
@@ -26,11 +28,14 @@ public class MainMenuController : MonoBehaviour
     private const string BOARD_GAME_SCENE_NAME = "BoardGame";
     private const string EXCEEDED_DAILY_MATCHES = "NineWorldsMinigame: Match nft amount exceed user valid nfts to play";
     private const string COME_BACK_TOMORROW_TEXT = "Excedeed\ndaily matches.\n\nCome back\nagain\ntomorrow";
+    private const string DONT_OWN_ANY_NFT_TEXT = "You don't own\nany 9 worlds\nmidgard nfts.\n\nGo buy at\nleast one on opensea";
+
 
     public GameObject connectButton;
     public GameObject playButton;
     public GameObject optionsButton;
     public GameObject infoText;
+    public GameObject openseaButton;
     public GameObject userInfoBox;
     public string account;
     public GameObject cardSelector;
@@ -97,56 +102,64 @@ public class MainMenuController : MonoBehaviour
     {
         string txStatus = "";
         string balanceOf = await evmService.BalanceOf(account);
-        selectorController.SetMaxAmount(int.Parse(balanceOf));
-        string userLastMatchId = await evmService.GetUserLastMatch(account);
-        string matchInfoResponse = await evmService.GetMatchInfoById(userLastMatchId);
-        MatchInfo matchInfo = JsonConvert.DeserializeObject<MatchInfo>(matchInfoResponse);
-        Debug.Log("UserLastMatch: " + userLastMatchId);
-        if (userLastMatchId == "0" || matchInfo.isMatchFinished)
+        if (balanceOf == "0")
         {
-            cardSelector.SetActive(true);
-            infoText.SetActive(false);
+            infoText.GetComponent<TextMeshProUGUI>().text = DONT_OWN_ANY_NFT_TEXT;
+            openseaButton.SetActive(true);
         }
         else
         {
-            try
+            selectorController.SetMaxAmount(int.Parse(balanceOf));
+            string userLastMatchId = await evmService.GetUserLastMatch(account);
+            string matchInfoResponse = await evmService.GetMatchInfoById(userLastMatchId);
+            MatchInfo matchInfo = JsonConvert.DeserializeObject<MatchInfo>(matchInfoResponse);
+            Debug.Log("UserLastMatch: " + userLastMatchId);
+            if (userLastMatchId == "0" || matchInfo.isMatchFinished)
             {
-                string response = await evmService.GetValidPlayerNft(userLastMatchId, "0");
+                cardSelector.SetActive(true);
+                infoText.SetActive(false);
             }
-            catch (Exception e)
+            else
             {
-                txStatus = "";
-                userLastMatchId = await evmService.GetUserLastMatch(account);
-                string randomSeed = "0";
-                int count = 0;
-                while (randomSeed == "0")
-                {
-                    await new WaitForSeconds(1f);
-                    Debug.Log(count);
-                    count++;
-                    matchInfoResponse = await evmService.GetMatchInfoById(userLastMatchId);
-                    matchInfo = JsonConvert.DeserializeObject<MatchInfo>(matchInfoResponse);
-                    randomSeed = matchInfo.matchRandomSeed;
-                    infoText.GetComponent<TextMeshProUGUI>().text = "Waiting for\nrandom seed...\n\n" + count + "secs\n\nup to\n60 seconds";
-                }
-                infoText.GetComponent<TextMeshProUGUI>().text = INITIALIZING_MATCH_TEXT;
-                string initMatchTxHash = "";
                 try
                 {
-                    initMatchTxHash = await evmService.InitializeMatch(account);
+                    string response = await evmService.GetValidPlayerNft(userLastMatchId, "0");
                 }
-                catch (Exception er)
+                catch (Exception e)
                 {
-                    ReloadWindow();
+                    txStatus = "";
+                    userLastMatchId = await evmService.GetUserLastMatch(account);
+                    string randomSeed = "0";
+                    int count = 0;
+                    while (randomSeed == "0")
+                    {
+                        await new WaitForSeconds(1f);
+                        Debug.Log(count);
+                        count++;
+                        matchInfoResponse = await evmService.GetMatchInfoById(userLastMatchId);
+                        matchInfo = JsonConvert.DeserializeObject<MatchInfo>(matchInfoResponse);
+                        randomSeed = matchInfo.matchRandomSeed;
+                        infoText.GetComponent<TextMeshProUGUI>().text = "Waiting for\nrandom seed...\n\n" + count + "secs\n\nup to\n60 seconds";
+                    }
+                    infoText.GetComponent<TextMeshProUGUI>().text = INITIALIZING_MATCH_TEXT;
+                    string initMatchTxHash = "";
+                    try
+                    {
+                        initMatchTxHash = await evmService.InitializeMatch(account);
+                    }
+                    catch (Exception er)
+                    {
+                        ReloadWindow();
+                    }
+                    while (txStatus == "" || txStatus == "pending")
+                    {
+                        txStatus = await evmService.TxStatus(initMatchTxHash);
+                        Debug.Log("Status:" + txStatus);
+                    }
                 }
-                while (txStatus == "" || txStatus == "pending")
-                {
-                    txStatus = await evmService.TxStatus(initMatchTxHash);
-                    Debug.Log("Status:" + txStatus);
-                }
+                PlayerPrefs.SetString("MatchId", userLastMatchId);
+                SceneManager.LoadScene(BOARD_GAME_SCENE_NAME);
             }
-            PlayerPrefs.SetString("MatchId", userLastMatchId);
-            SceneManager.LoadScene(BOARD_GAME_SCENE_NAME);
         }
     }
 
@@ -208,5 +221,10 @@ public class MainMenuController : MonoBehaviour
             SceneManager.LoadScene(BOARD_GAME_SCENE_NAME);
             PlayerPrefs.SetString("MatchId", userLastMatchId);
         }
+    }
+
+    public void OpenOpensea()
+    {
+        OpenURLInExternalWindow("https://opensea.io/collection/o9wmidgard");
     }
 }
