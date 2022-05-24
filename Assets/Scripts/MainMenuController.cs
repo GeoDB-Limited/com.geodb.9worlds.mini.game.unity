@@ -31,11 +31,13 @@ public class MainMenuController : MonoBehaviour
     public GameObject playButton;
     public GameObject optionsButton;
     public GameObject infoText;
+    public GameObject userInfoBox;
     public string account;
     public GameObject cardSelector;
     public CardSelectorController selectorController;
 
     private EVMService evmService;
+    private int totalGems;
 
     public void Connect()
     {
@@ -56,6 +58,22 @@ public class MainMenuController : MonoBehaviour
         infoText.SetActive(true);
         infoText.GetComponent<TextMeshProUGUI>().text = GETTING_MATCH_INFO_TEXT;
         CreatingMatch();
+    }
+
+    private async void SetUserInfoPanel()
+    {
+        string balance = await evmService.BalanceOf(account);
+        for (int i = 0; i < int.Parse(balance); i++)
+        {
+            string tokenId = await evmService.TokenOfOwnerByIndex(account, i);
+            NFTStatus nftStat = new NFTStatus();
+            string nftInfo = await evmService.GetNftStatusById(int.Parse(tokenId));
+            nftStat = JsonConvert.DeserializeObject<NFTStatus>(nftInfo);
+            totalGems += int.Parse(nftStat.points);
+        }
+        PlayerPrefs.SetInt("TotalGems", totalGems);
+        userInfoBox.SetActive(true);
+        userInfoBox.GetComponent<TextMeshProUGUI>().text = account.Substring(0, 6) + "........." + account.Substring(37, 4) + "\n\ntotal NFT gems:" + totalGems;
     }
 
     private IEnumerator ConnectToMetamask()
@@ -127,8 +145,8 @@ public class MainMenuController : MonoBehaviour
                     Debug.Log("Status:" + txStatus);
                 }
             }
-            SceneManager.LoadScene(BOARD_GAME_SCENE_NAME);
             PlayerPrefs.SetString("MatchId", userLastMatchId);
+            SceneManager.LoadScene(BOARD_GAME_SCENE_NAME);
         }
     }
 
@@ -170,7 +188,7 @@ public class MainMenuController : MonoBehaviour
                 string matchInfoResponse = await evmService.GetMatchInfoById(userLastMatchId);
                 MatchInfo matchInfo = JsonConvert.DeserializeObject<MatchInfo>(matchInfoResponse);
                 randomSeed = matchInfo.matchRandomSeed;
-                infoText.GetComponent<TextMeshProUGUI>().text = "Waiting for\nrandom seed...\n\n" + count + "secs\n\nup to\n60 seconds";
+                infoText.GetComponent<TextMeshProUGUI>().text = "Waiting for\nrandom seed...\n\n" + count + " secs\n\nup to\n60 seconds";
             }
             infoText.GetComponent<TextMeshProUGUI>().text = INITIALIZING_MATCH_TEXT;
             txStatus = "";

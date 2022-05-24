@@ -44,7 +44,7 @@ public class GameController : MonoBehaviour
     public int cardAmount;
     public List<GameObject> boards;
     public GameObject powerWinIndicator;
-
+    public GameObject userInfoBox;
     public GameObject reorderButton;
     public GameObject loadingScreen;
     public GameObject loadingText;
@@ -76,6 +76,8 @@ public class GameController : MonoBehaviour
     private int loadedCards = 1;
     private int firstSelectedIndex = -1;
     private int secondSelectedIndex = -1;
+    private int playerWinnerGems = 100;
+    private int playerTieGems = 10;
 
 
     async void Start()
@@ -88,6 +90,14 @@ public class GameController : MonoBehaviour
         playerCards = new List<GameObject>();
         reorderSelectedNfts = new List<GameObject>();
         List<Coroutine> coroutines = new List<Coroutine>();
+        /* 
+        string account = PlayerPrefs.GetString("Account");
+        userInfoBox.GetComponent<TextMeshProUGUI>().text = account.Substring(0, 6) + "........." + account.Substring(37, 4);
+        playerWinnerGems = PlayerPrefs.GetInt("PlayerWinnerGems");
+        playerTieGems = PlayerPrefs.GetInt("PlayerTieGems");
+        int totalGems = PlayerPrefs.GetInt("TotalGems");
+        string shortAccount = PlayerPrefs.GetString("ShortAccount");
+        userInfoBox.GetComponent<TextMeshProUGUI>().text = shortAccount + "\n\ntotal NFT gems:" + totalGems; */
         string userLastMatchId = PlayerPrefs.GetString("MatchId");
         string matchInfoResponse = await evmService.GetMatchInfoById(userLastMatchId);
         matchInfo = JsonConvert.DeserializeObject<MatchInfo>(matchInfoResponse);
@@ -99,8 +109,11 @@ public class GameController : MonoBehaviour
         for (int i = 0; i < cardAmount; i++)
         {
             string playerResponse = await evmService.GetValidPlayerNft(userLastMatchId, i.ToString());
-            string computerResponse = await evmService.GetValidComputerNft(userLastMatchId, i.ToString());
             selectedNfts.Add(int.Parse(playerResponse));
+        }
+        for (int i = 0; i < cardAmount; i++)
+        {
+            string computerResponse = await evmService.GetValidComputerNft(userLastMatchId, i.ToString());
             selectedNfts.Add(int.Parse(computerResponse));
         }
         playerNfts = selectedNfts.GetRange(0, cardAmount);
@@ -183,24 +196,26 @@ public class GameController : MonoBehaviour
         }
         result.SetActive(true);
         TextMeshProUGUI resultInfoText = GameObject.Find(RESULT_INFO_TEXT_NAME).GetComponent<TextMeshProUGUI>();
-        resultInfoText.text = playerPoints + " - " + aiPoints;
         TextMeshProUGUI winText = GameObject.Find(WIN_TEXT_NAME).GetComponent<TextMeshProUGUI>();
         GameObject[] winIcons = GameObject.FindGameObjectsWithTag(WIN_ICON_TAG);
         if (aiPoints > playerPoints)
         {
             winText.text = "Defeat!";
+            resultInfoText.text = playerPoints + " - " + aiPoints + "\nNo gems won!";
             winIcons[0].GetComponent<WinIconController>().iconState = IconState.Win;
             winIcons[1].GetComponent<WinIconController>().iconState = IconState.Win;
         }
         else if (aiPoints < playerPoints)
         {
             winText.text = "Victory!";
+            resultInfoText.text = playerPoints + " - " + aiPoints + "\n+" + playerWinnerGems + " gems!";
             winIcons[0].GetComponent<WinIconController>().iconState = IconState.Lose;
             winIcons[1].GetComponent<WinIconController>().iconState = IconState.Lose;
         }
         else
         {
             winText.text = "Tie!";
+            resultInfoText.text = playerPoints + " - " + aiPoints + "\n+" + playerTieGems + " gems!";
             winIcons[0].GetComponent<WinIconController>().iconState = IconState.Tie;
             winIcons[1].GetComponent<WinIconController>().iconState = IconState.Tie;
         }
