@@ -24,6 +24,8 @@ public class MainMenuController : MonoBehaviour
     private const string INITIALIZING_MATCH_TEXT = "Initializing\nmatch...";
     private const string WAITING_RANDOM_SEED_TEXT = "Waiting for\nrandom seed...\n\n0 secs\n\nup to\n60 seconds";
     private const string BOARD_GAME_SCENE_NAME = "BoardGame";
+    private const string EXCEEDED_DAILY_MATCHES = "NineWorldsMinigame: Match nft amount exceed user valid nfts to play";
+    private const string COME_BACK_TOMORROW_TEXT = "Excedeed\ndaily matches.\n\nCome back\nagain\ntomorrow";
 
     public GameObject connectButton;
     public GameObject playButton;
@@ -137,48 +139,56 @@ public class MainMenuController : MonoBehaviour
         string txStatus = "";
         infoText.GetComponent<TextMeshProUGUI>().text = CREATING_MATCH_TEXT;
         string createMatchTxHash = "";
-        try
+        string dryCreateMatchTxHash = await evmService.DryCreateMatch(selectorController.amountSelected, account);
+        if (dryCreateMatchTxHash.Contains(EXCEEDED_DAILY_MATCHES))
         {
-            createMatchTxHash = await evmService.CreateMatch(selectorController.amountSelected);
+            infoText.GetComponent<TextMeshProUGUI>().text = COME_BACK_TOMORROW_TEXT;
         }
-        catch (Exception e)
+        else
         {
-            ReloadWindow();
+            try
+            {
+                createMatchTxHash = await evmService.CreateMatch(selectorController.amountSelected);
+            }
+            catch (Exception e)
+            {
+                ReloadWindow();
+            }
+            while (txStatus == "" || txStatus == "pending")
+            {
+                txStatus = await evmService.TxStatus(createMatchTxHash);
+            }
+            infoText.GetComponent<TextMeshProUGUI>().text = WAITING_RANDOM_SEED_TEXT;
+            string userLastMatchId = await evmService.GetUserLastMatch(account);
+            string randomSeed = "0";
+            int count = 0;
+            while (randomSeed == "0")
+            {
+                await new WaitForSeconds(1f);
+                Debug.Log(count);
+                count++;
+                string matchInfoResponse = await evmService.GetMatchInfoById(userLastMatchId);
+                MatchInfo matchInfo = JsonConvert.DeserializeObject<MatchInfo>(matchInfoResponse);
+                randomSeed = matchInfo.matchRandomSeed;
+                infoText.GetComponent<TextMeshProUGUI>().text = "Waiting for\nrandom seed...\n\n" + count + "secs\n\nup to\n60 seconds";
+            }
+            infoText.GetComponent<TextMeshProUGUI>().text = INITIALIZING_MATCH_TEXT;
+            txStatus = "";
+            string initMatchTxHash = "";
+            try
+            {
+                initMatchTxHash = await evmService.InitializeMatch(account);
+            }
+            catch (Exception e)
+            {
+                ReloadWindow();
+            }
+            while (txStatus == "" || txStatus == "pending")
+            {
+                txStatus = await evmService.TxStatus(initMatchTxHash);
+            }
+            SceneManager.LoadScene(BOARD_GAME_SCENE_NAME);
+            PlayerPrefs.SetString("MatchId", userLastMatchId);
         }
-        while (txStatus == "" || txStatus == "pending")
-        {
-            txStatus = await evmService.TxStatus(createMatchTxHash);
-        }
-        infoText.GetComponent<TextMeshProUGUI>().text = WAITING_RANDOM_SEED_TEXT;
-        string userLastMatchId = await evmService.GetUserLastMatch(account);
-        string randomSeed = "0";
-        int count = 0;
-        while (randomSeed == "0")
-        {
-            await new WaitForSeconds(1f);
-            Debug.Log(count);
-            count++;
-            string matchInfoResponse = await evmService.GetMatchInfoById(userLastMatchId);
-            MatchInfo matchInfo = JsonConvert.DeserializeObject<MatchInfo>(matchInfoResponse);
-            randomSeed = matchInfo.matchRandomSeed;
-            infoText.GetComponent<TextMeshProUGUI>().text = "Waiting for\nrandom seed...\n\n" + count + "secs\n\nup to\n60 seconds";
-        }
-        infoText.GetComponent<TextMeshProUGUI>().text = INITIALIZING_MATCH_TEXT;
-        txStatus = "";
-        string initMatchTxHash = "";
-        try
-        {
-            initMatchTxHash = await evmService.InitializeMatch(account);
-        }
-        catch (Exception e)
-        {
-            ReloadWindow();
-        }
-        while (txStatus == "" || txStatus == "pending")
-        {
-            txStatus = await evmService.TxStatus(initMatchTxHash);
-        }
-        SceneManager.LoadScene(BOARD_GAME_SCENE_NAME);
-        PlayerPrefs.SetString("MatchId", userLastMatchId);
     }
 }

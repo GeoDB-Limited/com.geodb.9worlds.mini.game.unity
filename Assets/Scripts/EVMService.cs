@@ -1,4 +1,8 @@
 using System;
+using UnityEngine.Networking;
+using UnityEngine;
+using Newtonsoft.Json;
+using EstimateJSONRPC;
 
 public class EVMService
 {
@@ -26,7 +30,7 @@ public class EVMService
         string args = "[\"" + account + "\"]";
         try
         {
-            return await EVM.Call(chain, network, contract, abi, method, args);
+            return await EVM.Call(chain, network, contract, abi, method, args, rpc);
         }
         catch (Exception e)
         {
@@ -40,7 +44,7 @@ public class EVMService
         string args = "[\"" + id + "\"]";
         try
         {
-            return await EVM.Call(chain, network, contract, abi, method, args);
+            return await EVM.Call(chain, network, contract, abi, method, args, rpc);
         }
         catch (Exception e)
         {
@@ -54,7 +58,7 @@ public class EVMService
         string args = "[\"" + matchId + "\", \"" + index + "\"]";
         try
         {
-            return await EVM.Call(chain, network, contract, abi, method, args);
+            return await EVM.Call(chain, network, contract, abi, method, args, rpc);
         }
         catch (Exception e)
         {
@@ -68,7 +72,7 @@ public class EVMService
         string args = "[\"" + account + "\"]";
         try
         {
-            return await EVM.Call(chain, network, nftContract, nftABI, method, args);
+            return await EVM.Call(chain, network, nftContract, nftABI, method, args, rpc);
         }
         catch (Exception e)
         {
@@ -82,7 +86,7 @@ public class EVMService
         string args = "[\"" + matchId + "\", \"" + index + "\"]";
         try
         {
-            return await EVM.Call(chain, network, contract, abi, method, args);
+            return await EVM.Call(chain, network, contract, abi, method, args, rpc);
         }
         catch (Exception e)
         {
@@ -98,6 +102,33 @@ public class EVMService
         try
         {
             return await Web3GL.SendContract(method, abi, contract, args, value, gasLimit, gasPrice);
+        }
+        catch (Exception e)
+        {
+            throw e;
+        }
+    }
+
+    public async System.Threading.Tasks.Task<string> DryCreateMatch(int numberOfNfts, string account)
+    {
+        string method = "createMatchAndRequestRandom";
+        string args = "[\"" + numberOfNfts + "\"]";
+        string data = await EVM.CreateContractData(abi, method, args);
+        EstimateJsonRpc jrpc = new EstimateJsonRpc();
+        jrpc.@params = new System.Object[] { new GasEstimateJsonRpcParams(account, contract, "0xA7A358200", "0xAA358", "0x0", data), "latest" };
+        string body = JsonConvert.SerializeObject(jrpc);
+
+        try
+        {
+            using (UnityWebRequest webRequest = UnityWebRequest.Post(rpc, ""))
+            {
+                webRequest.uploadHandler = new UploadHandlerRaw(new System.Text.UTF8Encoding().GetBytes(body));
+                webRequest.SetRequestHeader("Content-Type", "application/json");
+                await webRequest.SendWebRequest();
+                EstimateErrorJsonRpc rpcError = new EstimateErrorJsonRpc();
+                rpcError = JsonConvert.DeserializeObject<EstimateErrorJsonRpc>(webRequest.downloadHandler.text);
+                return rpcError.error.message;
+            }
         }
         catch (Exception e)
         {
