@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <title>Unity WebGL Player | {{{ PRODUCT_NAME }}}</title>
+  <title>Unity WebGL Player | Odin 9 Worlds Minigame</title>
   <link rel="shortcut icon" href="TemplateData/favicon.ico">
   <link rel="stylesheet" href="TemplateData/style.css">
 </head>
@@ -22,7 +22,7 @@
     <div id="unity-footer">
       <div id="unity-webgl-logo"></div>
       <div id="unity-fullscreen-button"></div>
-      <div id="unity-build-title">{{{ PRODUCT_NAME }}}</div>
+      <div id="unity-build-title">Odin 9 Worlds Minigame</div>
     </div>
   </div>
   <script src="web3/index.js"></script>
@@ -59,21 +59,15 @@
     }
 
     var buildUrl = "Build";
-    var loaderUrl = buildUrl + "/{{{ LOADER_FILENAME }}}";
+    var loaderUrl = buildUrl + "/final.loader.js";
     var config = {
-      dataUrl: buildUrl + "/{{{ DATA_FILENAME }}}",
-      frameworkUrl: buildUrl + "/{{{ FRAMEWORK_FILENAME }}}",
-      codeUrl: buildUrl + "/{{{ CODE_FILENAME }}}",
-      #if MEMORY_FILENAME
-        memoryUrl: buildUrl + "/{{{ MEMORY_FILENAME }}}",
-      #endif
-#if SYMBOLS_FILENAME
-        symbolsUrl: buildUrl + "/{{{ SYMBOLS_FILENAME }}}",
-      #endif
+      dataUrl: buildUrl + "/final.data",
+      frameworkUrl: buildUrl + "/final.framework.js",
+      codeUrl: buildUrl + "/final.wasm",
         streamingAssetsUrl: "StreamingAssets",
-      companyName: "{{{ COMPANY_NAME }}}",
-      productName: "{{{ PRODUCT_NAME }}}",
-      productVersion: "{{{ PRODUCT_VERSION }}}",
+      companyName: "GeoDB",
+      productName: "Odin 9 Worlds Minigame",
+      productVersion: "1.0",
       showBanner: unityShowBanner,
     };
 
@@ -91,12 +85,9 @@
       config.devicePixelRatio = 1;
       unityShowBanner('WebGL builds are not supported on mobile devices.');
     } else {
-      canvas.style.width = "{{{ WIDTH }}}px";
-      canvas.style.height = "{{{ HEIGHT }}}px";
+      canvas.style.width = "1280px";
+      canvas.style.height = "720px";
     }
-    #if BACKGROUND_FILENAME
-    canvas.style.background = "url('" + buildUrl + "/{{{ BACKGROUND_FILENAME.replace(/'/g, '%27') }}}') center / cover";
-    #endif
     loadingBar.style.display = "block";
 
     var script = document.createElement("script");
