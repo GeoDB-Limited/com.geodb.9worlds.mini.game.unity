@@ -88,3 +88,10 @@ There will be a more advanced UI design of the game with more information about 
 
 New gaem mechanis, there will be multiple machanics added to this main one on thw future mainnet game.
 
+## Screenshots
+![connect](/screenshots/connect.png "Connect")
+![play](/screenshots/play.png "Play")
+![Selector](/screenshots/selector.png "Selector")
+![Game](/screenshots/game.png "Game")
+![Reorder](/screenshots/reorder.png "Reorder")
+![Result](/screenshots/result.png "Result")
