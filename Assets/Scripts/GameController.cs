@@ -24,6 +24,8 @@ public class GameController : MonoBehaviour
     private const string BASE_URI = "https://odin9worldsmidgard.mypinata.cloud/ipfs/QmTgJNNnaF2tcaXNufmkjKHEUquJA45sW9V9bBw2MdgEDn/";
     private const string POLYGON_SCAN_BASE_URL = "https://mumbai.polygonscan.com/tx/";
     private const string BASE_EXTENSION = ".json";
+    private const string NFT_PREFIX = "NFT";
+
     private const string AI_HAND_NAME = "AIHand";
     private const string PLAYER_HAND_NAME = "PlayerHand";
     private const string AI_TOTAL_POWER_NAME = "TotalPowerAI";
@@ -78,6 +80,7 @@ public class GameController : MonoBehaviour
     private int secondSelectedIndex = -1;
     private int playerWinnerGems = 100;
     private int playerTieGems = 10;
+    private int totalGems = 0;
 
 
     async void Start()
@@ -90,14 +93,13 @@ public class GameController : MonoBehaviour
         playerCards = new List<GameObject>();
         reorderSelectedNfts = new List<GameObject>();
         List<Coroutine> coroutines = new List<Coroutine>();
-        /* 
+
         string account = PlayerPrefs.GetString("Account");
-        userInfoBox.GetComponent<TextMeshProUGUI>().text = account.Substring(0, 6) + "........." + account.Substring(37, 4);
-        playerWinnerGems = PlayerPrefs.GetInt("PlayerWinnerGems");
-        playerTieGems = PlayerPrefs.GetInt("PlayerTieGems");
-        int totalGems = PlayerPrefs.GetInt("TotalGems");
+        totalGems = PlayerPrefs.GetInt("TotalGems");
         string shortAccount = PlayerPrefs.GetString("ShortAccount");
-        userInfoBox.GetComponent<TextMeshProUGUI>().text = shortAccount + "\n\ntotal NFT gems:" + totalGems; */
+        userInfoBox.SetActive(true);
+        userInfoBox.transform.Find("UserAddress").GetComponent<TextMeshProUGUI>().text = shortAccount;
+        userInfoBox.transform.Find("WeakBalance").GetComponent<TextMeshProUGUI>().text = "Total O9W tickets:\n" + totalGems;
         string userLastMatchId = PlayerPrefs.GetString("MatchId");
         string matchInfoResponse = await evmService.GetMatchInfoById(userLastMatchId);
         matchInfo = JsonConvert.DeserializeObject<MatchInfo>(matchInfoResponse);
@@ -120,19 +122,22 @@ public class GameController : MonoBehaviour
         aiNfts = selectedNfts.GetRange(cardAmount, cardAmount);
         foreach (Transform item in aiHand.GetComponentsInChildren<Transform>())
         {
-            if (item.name != AI_HAND_NAME && !item.name.Contains(FRAME_NAME) && !item.name.Contains(WIN_INDICATOR_NAME))
+            if (item.name.Contains(NFT_PREFIX))
             {
+                Debug.Log(item.name);
                 aiCards.Add(item.gameObject);
             }
         }
         foreach (Transform item in playerHand.GetComponentsInChildren<Transform>())
         {
-            if (item.name != PLAYER_HAND_NAME && !item.name.Contains(OUTLINE_NAME) && !item.name.Contains(FRAME_NAME) && !item.name.Contains(WIN_INDICATOR_NAME))
+            if (item.name.Contains(NFT_PREFIX))
             {
+                Debug.Log(item.name);
                 playerCards.Add(item.gameObject);
             }
             else if (item.name == WIN_INDICATOR_NAME)
             {
+                Debug.Log(item.name);
                 playerWinIndicators.Add(item.gameObject);
             }
         }
@@ -208,14 +213,16 @@ public class GameController : MonoBehaviour
         else if (aiPoints < playerPoints)
         {
             winText.text = "Victory!";
-            resultInfoText.text = playerPoints + " - " + aiPoints + "\n+" + playerWinnerGems + " gems!";
+            resultInfoText.text = playerPoints + " - " + aiPoints + "\n+" + playerWinnerGems * cardAmount + " gems!";
+            userInfoBox.transform.Find("WeakBalance").GetComponent<TextMeshProUGUI>().text = "Total O9W tickets:\n" + (totalGems + (playerWinnerGems * cardAmount));
             winIcons[0].GetComponent<WinIconController>().iconState = IconState.Lose;
             winIcons[1].GetComponent<WinIconController>().iconState = IconState.Lose;
         }
         else
         {
             winText.text = "Tie!";
-            resultInfoText.text = playerPoints + " - " + aiPoints + "\n+" + playerTieGems + " gems!";
+            resultInfoText.text = playerPoints + " - " + aiPoints + "\n+" + playerTieGems * cardAmount + " gems!";
+            userInfoBox.transform.Find("WeakBalance").GetComponent<TextMeshProUGUI>().text = "Total O9W tickets:\n" + (totalGems + (playerTieGems * cardAmount));
             winIcons[0].GetComponent<WinIconController>().iconState = IconState.Tie;
             winIcons[1].GetComponent<WinIconController>().iconState = IconState.Tie;
         }
@@ -261,6 +268,7 @@ public class GameController : MonoBehaviour
         swapButton.SetActive(false);
         reorderButton.SetActive(false);
         cancelReorderButton.SetActive(false);
+        isReorderSelectionActive = false;
     }
 
     public void OpenBrowserTx()

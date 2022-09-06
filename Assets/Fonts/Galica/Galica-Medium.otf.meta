@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: bb6851ba01343456282e119a5d293890
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Galica
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: ab8944815a177401d9eec5cd8da1e3f2, type: 3}
+  - {fileID: 12800000, guid: 77e4e7da2a3a04a43accf9f5865d69d1, type: 3}
+  - {fileID: 12800000, guid: 1749a48d07247400f8213c6ed00a2938, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

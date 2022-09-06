@@ -86,7 +86,7 @@ This game will be launched on polygon mainnet point to mainnet Odin 9 Worlds Nft
 
 There will be a more advanced UI design of the game with more information about GEMs, owned NFTs.
 
-New gaem mechanis, there will be multiple machanics added to this main one on thw future mainnet game.
+New game mechanis, there will be multiple machanics added to this main one on thw future mainnet game.
 
 ## Screenshots
 ![connect](/screenshots/connect.png "Connect")

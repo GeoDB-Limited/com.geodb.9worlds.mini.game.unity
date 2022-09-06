@@ -38,6 +38,7 @@ public class NFTController : MonoBehaviour
             Vector3 positon = Vector3.Lerp(startingPosition, objectivePosition, 1);
             transform.position = positon;
         }
+        transform.GetComponent<NFTGameObjectInfo>().isInteractable = !gameController.isReorderSelectionActive;
     }
 
     private void OnMouseEnter() {

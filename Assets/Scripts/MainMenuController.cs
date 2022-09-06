@@ -28,7 +28,7 @@ public class MainMenuController : MonoBehaviour
     private const string BOARD_GAME_SCENE_NAME = "BoardGame";
     private const string EXCEEDED_DAILY_MATCHES = "NineWorldsMinigame: Match nft amount exceed user valid nfts to play";
     private const string COME_BACK_TOMORROW_TEXT = "Excedeed\ndaily matches.\n\nCome back\nagain\ntomorrow";
-    private const string DONT_OWN_ANY_NFT_TEXT = "You don't own\nany 9 worlds\nmidgard nfts.\n\nGo buy at\nleast one on opensea";
+    private const string DONT_OWN_ANY_NFT_TEXT = "You don't own\nany 9 worlds\nmidgard nfts.\n\nGo buy at\nleast one on \nopensea";
 
 
     public GameObject connectButton;
@@ -67,18 +67,13 @@ public class MainMenuController : MonoBehaviour
 
     private async void SetUserInfoPanel()
     {
-        string balance = await evmService.BalanceOf(account);
-        for (int i = 0; i < int.Parse(balance); i++)
-        {
-            string tokenId = await evmService.TokenOfOwnerByIndex(account, i);
-            NFTStatus nftStat = new NFTStatus();
-            string nftInfo = await evmService.GetNftStatusById(int.Parse(tokenId));
-            nftStat = JsonConvert.DeserializeObject<NFTStatus>(nftInfo);
-            totalGems += int.Parse(nftStat.points);
-        }
+        string balance = await evmService.pointBalanceOf(account);
+        int totalGems = int.Parse(balance);
         PlayerPrefs.SetInt("TotalGems", totalGems);
+        PlayerPrefs.SetString("ShortAccount", account.Substring(0, 6) + "........." + account.Substring(37, 4));
         userInfoBox.SetActive(true);
-        userInfoBox.GetComponent<TextMeshProUGUI>().text = account.Substring(0, 6) + "........." + account.Substring(37, 4) + "\n\ntotal NFT gems:" + totalGems;
+        userInfoBox.transform.Find("UserAddress").GetComponent<TextMeshProUGUI>().text = account.Substring(0, 6) + "........." + account.Substring(37, 4);
+        userInfoBox.transform.Find("WeakBalance").GetComponent<TextMeshProUGUI>().text = "Total O9W tickets:\n" + totalGems;
     }
 
     private IEnumerator ConnectToMetamask()
@@ -96,6 +91,7 @@ public class MainMenuController : MonoBehaviour
         playButton.SetActive(true);
         optionsButton.SetActive(true);
         infoText.SetActive(false);
+        SetUserInfoPanel();
     }
 
     private async void CreatingMatch()
@@ -136,10 +132,13 @@ public class MainMenuController : MonoBehaviour
                         await new WaitForSeconds(1f);
                         Debug.Log(count);
                         count++;
-                        matchInfoResponse = await evmService.GetMatchInfoById(userLastMatchId);
-                        matchInfo = JsonConvert.DeserializeObject<MatchInfo>(matchInfoResponse);
-                        randomSeed = matchInfo.matchRandomSeed;
-                        infoText.GetComponent<TextMeshProUGUI>().text = "Waiting for\nrandom seed...\n\n" + count + "secs\n\nup to\n60 seconds";
+                        if (count % 5 == 0 || count == 1){
+                            Debug.Log("Asking seed...");
+                            matchInfoResponse = await evmService.GetMatchInfoById(userLastMatchId);
+                            matchInfo = JsonConvert.DeserializeObject<MatchInfo>(matchInfoResponse);
+                            randomSeed = matchInfo.matchRandomSeed;
+                        }
+                        infoText.GetComponent<TextMeshProUGUI>().text = "Waiting for\nrandom seed...\n\n" + count + " secs\n\nup to\n60 seconds";
                     }
                     infoText.GetComponent<TextMeshProUGUI>().text = INITIALIZING_MATCH_TEXT;
                     string initMatchTxHash = "";
@@ -198,9 +197,12 @@ public class MainMenuController : MonoBehaviour
                 await new WaitForSeconds(1f);
                 Debug.Log(count);
                 count++;
-                string matchInfoResponse = await evmService.GetMatchInfoById(userLastMatchId);
-                MatchInfo matchInfo = JsonConvert.DeserializeObject<MatchInfo>(matchInfoResponse);
-                randomSeed = matchInfo.matchRandomSeed;
+                if (count % 5 == 0 || count == 1){
+                    Debug.Log("Asking seed...");
+                    string matchInfoResponse = await evmService.GetMatchInfoById(userLastMatchId);
+                    MatchInfo matchInfo = JsonConvert.DeserializeObject<MatchInfo>(matchInfoResponse);
+                    randomSeed = matchInfo.matchRandomSeed;
+                }
                 infoText.GetComponent<TextMeshProUGUI>().text = "Waiting for\nrandom seed...\n\n" + count + " secs\n\nup to\n60 seconds";
             }
             infoText.GetComponent<TextMeshProUGUI>().text = INITIALIZING_MATCH_TEXT;
