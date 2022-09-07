@@ -86,6 +86,74 @@ body::before {
     text-align: center;
 }
 
+.buy-button-overlay {
+    height: 50px;
+    position: absolute;
+    right: 60px;
+    opacity: 0;
+    transition: .5s ease;
+}
+
+.buy-button-overlay:hover {
+    opacity: 1;
+}
+
+.back-button-overlay {
+    height: 50px;
+    position: absolute;
+    left: 60px;
+    opacity: 0;
+    transition: .5s ease;
+}
+
+.back-button-overlay:hover {
+    opacity: 1;
+}
+
+.odin-button-overlay {
+    position: absolute;
+    left: 60px;
+    opacity: 0;
+    transition: .5s ease;
+}
+
+.odin-button-overlay:hover {
+    opacity: 1;
+}
+
+.twitter-button-overlay {
+    position: absolute;
+    left: 200px;
+    opacity: 0;
+    transition: .5s ease;
+}
+
+.twitter-button-overlay:hover {
+    opacity: 1;
+}
+
+.instagram-button-overlay {
+    position: absolute;
+    left: 290px;
+    opacity: 0;
+    transition: .5s ease;
+}
+
+.instagram-button-overlay:hover {
+    opacity: 1;
+}
+
+.discord-button-overlay {
+    position: absolute;
+    left: 377px;
+    opacity: 0;
+    transition: .5s ease;
+}
+
+.discord-button-overlay:hover {
+    opacity: 1;
+}
+
 #unity-container {
     position: absolute
 }
