@@ -22,7 +22,7 @@ public class GameController : MonoBehaviour
     private static extern void ReloadWindow();
 
     private const string BASE_URI = "https://odin9worldsmidgard.mypinata.cloud/ipfs/QmTgJNNnaF2tcaXNufmkjKHEUquJA45sW9V9bBw2MdgEDn/";
-    private const string POLYGON_SCAN_BASE_URL = "https://mumbai.polygonscan.com/tx/";
+    private const string POLYGON_SCAN_BASE_URL = "https://polygonscan.com/tx/";
     private const string BASE_EXTENSION = ".json";
     private const string NFT_PREFIX = "NFT";
 
@@ -206,14 +206,14 @@ public class GameController : MonoBehaviour
         if (aiPoints > playerPoints)
         {
             winText.text = "Defeat!";
-            resultInfoText.text = playerPoints + " - " + aiPoints + "\nNo gems won!";
+            resultInfoText.text = playerPoints + " - " + aiPoints + "\nNo tickets won!";
             winIcons[0].GetComponent<WinIconController>().iconState = IconState.Win;
             winIcons[1].GetComponent<WinIconController>().iconState = IconState.Win;
         }
         else if (aiPoints < playerPoints)
         {
             winText.text = "Victory!";
-            resultInfoText.text = playerPoints + " - " + aiPoints + "\n+" + playerWinnerGems * cardAmount + " gems!";
+            resultInfoText.text = playerPoints + " - " + aiPoints + "\n+" + playerWinnerGems * cardAmount + " tickets!";
             userInfoBox.transform.Find("WeakBalance").GetComponent<TextMeshProUGUI>().text = "Total O9W tickets:\n" + (totalGems + (playerWinnerGems * cardAmount));
             winIcons[0].GetComponent<WinIconController>().iconState = IconState.Lose;
             winIcons[1].GetComponent<WinIconController>().iconState = IconState.Lose;
@@ -221,7 +221,7 @@ public class GameController : MonoBehaviour
         else
         {
             winText.text = "Tie!";
-            resultInfoText.text = playerPoints + " - " + aiPoints + "\n+" + playerTieGems * cardAmount + " gems!";
+            resultInfoText.text = playerPoints + " - " + aiPoints + "\n+" + playerTieGems * cardAmount + " tickets!";
             userInfoBox.transform.Find("WeakBalance").GetComponent<TextMeshProUGUI>().text = "Total O9W tickets:\n" + (totalGems + (playerTieGems * cardAmount));
             winIcons[0].GetComponent<WinIconController>().iconState = IconState.Tie;
             winIcons[1].GetComponent<WinIconController>().iconState = IconState.Tie;
@@ -361,7 +361,10 @@ public class GameController : MonoBehaviour
             string nftMetadata = webRequest.downloadHandler.text;
             NFTMetadata currentMetadata = new NFTMetadata();
             currentMetadata = JsonConvert.DeserializeObject<NFTMetadata>(nftMetadata);
-            metadata.Add(currentMetadata.edition, currentMetadata);
+            if (!metadata.ContainsKey(currentMetadata.edition))
+            {
+                metadata.Add(currentMetadata.edition, currentMetadata);
+            }
 
             using (UnityWebRequest textureRequest = UnityWebRequestTexture.GetTexture(currentMetadata.image))
             {

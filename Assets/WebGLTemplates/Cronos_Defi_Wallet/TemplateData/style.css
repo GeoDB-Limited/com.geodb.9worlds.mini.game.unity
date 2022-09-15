@@ -9,6 +9,10 @@ body {
     background-color: #000000;
 }
 
+a {
+    text-decoration: none;
+}
+
 body::before {
     content: "";
     background-size: cover;
@@ -22,7 +26,7 @@ body::before {
 }
 
 .header {
-    padding: 60px;
+    padding: 40px;
     color: #FFF7E4;
     text-align: center;
     font-size: 30px;
@@ -65,6 +69,7 @@ body::before {
 .footer-btn-left {
     margin-left: 15px;
     height: 45px;
+    text-decoration: none;
 }
 
 .footer-btn-right {
@@ -77,7 +82,7 @@ body::before {
 }
 
 .footer {
-    padding: 40px;
+    padding: 20px;
     position: fixed;
     left: 0;
     bottom: 0;
@@ -95,7 +100,7 @@ body::before {
 }
 
 .buy-button-overlay:hover {
-    opacity: 1;
+    opacity: 0;
 }
 
 .back-button-overlay {
@@ -107,7 +112,7 @@ body::before {
 }
 
 .back-button-overlay:hover {
-    opacity: 1;
+    opacity: 0;
 }
 
 .odin-button-overlay {
@@ -118,7 +123,7 @@ body::before {
 }
 
 .odin-button-overlay:hover {
-    opacity: 1;
+    opacity: 0;
 }
 
 .twitter-button-overlay {
@@ -129,7 +134,7 @@ body::before {
 }
 
 .twitter-button-overlay:hover {
-    opacity: 1;
+    opacity: 0;
 }
 
 .instagram-button-overlay {
@@ -140,7 +145,7 @@ body::before {
 }
 
 .instagram-button-overlay:hover {
-    opacity: 1;
+    opacity: 0;
 }
 
 .discord-button-overlay {
@@ -151,7 +156,7 @@ body::before {
 }
 
 .discord-button-overlay:hover {
-    opacity: 1;
+    opacity: 0;
 }
 
 #unity-container {

@@ -28,7 +28,7 @@ public class MainMenuController : MonoBehaviour
     private const string BOARD_GAME_SCENE_NAME = "BoardGame";
     private const string EXCEEDED_DAILY_MATCHES = "NineWorldsMinigame: Match nft amount exceed user valid nfts to play";
     private const string COME_BACK_TOMORROW_TEXT = "Excedeed\ndaily matches.\n\nCome back\nagain\ntomorrow";
-    private const string DONT_OWN_ANY_NFT_TEXT = "You don't own\nany 9 worlds\nmidgard nfts.\n\nGo buy at\nleast one on \nopensea";
+    private const string DONT_OWN_ANY_NFT_TEXT = "You don't own\nany 9 worlds\nmidgard nfts.\n\nGo buy at\nleast one on";
 
 
     public GameObject connectButton;
@@ -132,7 +132,8 @@ public class MainMenuController : MonoBehaviour
                         await new WaitForSeconds(1f);
                         Debug.Log(count);
                         count++;
-                        if (count % 5 == 0 || count == 1){
+                        if (count % 5 == 0 || count == 1)
+                        {
                             Debug.Log("Asking seed...");
                             matchInfoResponse = await evmService.GetMatchInfoById(userLastMatchId);
                             matchInfo = JsonConvert.DeserializeObject<MatchInfo>(matchInfoResponse);
@@ -197,7 +198,8 @@ public class MainMenuController : MonoBehaviour
                 await new WaitForSeconds(1f);
                 Debug.Log(count);
                 count++;
-                if (count % 5 == 0 || count == 1){
+                if (count % 5 == 0 || count == 1)
+                {
                     Debug.Log("Asking seed...");
                     string matchInfoResponse = await evmService.GetMatchInfoById(userLastMatchId);
                     MatchInfo matchInfo = JsonConvert.DeserializeObject<MatchInfo>(matchInfoResponse);
