@@ -233,6 +233,12 @@ public class GameController : MonoBehaviour
         isReorderSelectionActive = !isReorderSelectionActive;
         reorderButton.SetActive(!isReorderSelectionActive);
         cancelReorderButton.SetActive(isReorderSelectionActive);
+        foreach (GameObject item in reorderSelectedNfts)
+        {
+            item.GetComponent<NFTController>().setIsOutlineVisible(false);
+        }
+        reorderSelectedNfts = new List<GameObject>();
+        swapButton.SetActive(false);
     }
 
     public bool selectReorderNFT(GameObject selectedItem)
