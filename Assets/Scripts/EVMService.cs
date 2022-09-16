@@ -3,6 +3,8 @@ using UnityEngine.Networking;
 using UnityEngine;
 using Newtonsoft.Json;
 using EstimateJSONRPC;
+using Nethereum.Hex.HexConvertors.Extensions;
+using System.Numerics;
 
 public class EVMService
 {
@@ -167,17 +169,19 @@ public class EVMService
 
     public async System.Threading.Tasks.Task<string> CreateMatch(int numberOfNfts)
     {
+        Debug.Log("1");
         string method = "createMatchAndRequestRandom";
         string args = "[\"" + numberOfNfts + "\"]";
         string gasPrice = await EVM.GasPrice(chain, network, rpc);
 
-
+        Debug.Log("2");
         try
         {
             return await Web3GL.SendContract(method, abi, contract, args, value, gasLimit, gasPrice);
         }
         catch (Exception e)
         {
+            Debug.Log("3");
             throw e;
         }
     }
@@ -187,8 +191,12 @@ public class EVMService
         string method = "createMatchAndRequestRandom";
         string args = "[\"" + numberOfNfts + "\"]";
         string data = await EVM.CreateContractData(abi, method, args);
+        string gasPrice = await EVM.GasPrice(chain, network, rpc);
+        Debug.Log("Data " + gasPrice);
+        Debug.Log("Data " + HexBigIntegerConvertorExtensions.ToHex(BigInteger.Parse(gasPrice), false));
+        Debug.Log("Data " + HexBigIntegerConvertorExtensions.ToHex(BigInteger.Parse(gasPrice), true));
         EstimateJsonRpc jrpc = new EstimateJsonRpc();
-        jrpc.@params = new System.Object[] { new GasEstimateJsonRpcParams(account, contract, "0xA7A358200", "0xAA358", "0x0", data), "latest" };
+        jrpc.@params = new System.Object[] { new GasEstimateJsonRpcParams(account, contract, HexBigIntegerConvertorExtensions.ToHex(BigInteger.Parse(gasPrice), false), "0x19DD68", "0x0", data), "latest" };
         string body = JsonConvert.SerializeObject(jrpc);
 
         try
@@ -199,12 +207,21 @@ public class EVMService
                 webRequest.SetRequestHeader("Content-Type", "application/json");
                 await webRequest.SendWebRequest();
                 EstimateErrorJsonRpc rpcError = new EstimateErrorJsonRpc();
+
+                Debug.Log("-1 " + webRequest.downloadHandler.text);
                 rpcError = JsonConvert.DeserializeObject<EstimateErrorJsonRpc>(webRequest.downloadHandler.text);
-                return rpcError.error.message;
+                Debug.Log("-2 " + rpcError);
+                string result = "";
+                if (rpcError == null)
+                {
+                    result = rpcError.error.message;
+                }
+                return result;
             }
         }
         catch (Exception e)
         {
+            Debug.Log("0");
             throw e;
         }
     }

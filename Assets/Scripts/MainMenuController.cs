@@ -171,6 +171,7 @@ public class MainMenuController : MonoBehaviour
         infoText.GetComponent<TextMeshProUGUI>().text = CREATING_MATCH_TEXT;
         string createMatchTxHash = "";
         string dryCreateMatchTxHash = await evmService.DryCreateMatch(selectorController.amountSelected, account);
+        Debug.Log(dryCreateMatchTxHash);
         if (dryCreateMatchTxHash.Contains(EXCEEDED_DAILY_MATCHES))
         {
             infoText.GetComponent<TextMeshProUGUI>().text = COME_BACK_TOMORROW_TEXT;
