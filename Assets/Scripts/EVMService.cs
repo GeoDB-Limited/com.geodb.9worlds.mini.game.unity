@@ -212,7 +212,7 @@ public class EVMService
                 rpcError = JsonConvert.DeserializeObject<EstimateErrorJsonRpc>(webRequest.downloadHandler.text);
                 Debug.Log("-2 " + rpcError);
                 string result = "";
-                if (rpcError == null)
+                if (rpcError != null)
                 {
                     result = rpcError.error.message;
                 }
