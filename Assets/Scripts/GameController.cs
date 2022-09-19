@@ -38,7 +38,7 @@ public class GameController : MonoBehaviour
     private const string WIN_TEXT_NAME = "WinnerText";
     private const string RESULT_INFO_TEXT_NAME = "ResultInfoText";
     private const string WIN_ICON_TAG = "WinIcon";
-    private const string WATING_FOR_TX_CONFIRM_TEXT = "Wating for tx confirmation...";
+    private const string WATING_FOR_TX_CONFIRM_TEXT = "Waiting for tx confirmation...";
     private const string SUCCESS_TEXT = "Success!";
 
     private const int LAST_NFT_ID = 999;
